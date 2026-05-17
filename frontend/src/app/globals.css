@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4f7f6; /* slightly minty grey background */
+  --foreground: #1a1a1a;
+  --color-primary: #10B981; /* GrabOn Vibrant Emerald Green */
+  --color-secondary: #059669; /* Darker Green for hover */
+  --color-accent: #ffffff; /* White headers */
+  --color-surface: #ffffff; 
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-surface: var(--color-surface);
+  --font-sans: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  background: #e5e7eb; /* Subtle gray for the viewport gutter */
+  height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-shadow: 0 0 50px rgba(0,0,0,0.05);
+  position: relative;
+}

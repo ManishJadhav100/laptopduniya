@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import AppProviders from "@/components/AppProviders";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GlobalPushPopup from "@/components/GlobalPushPopup";
 import ActionModal from "@/components/ActionModal";
-import { AppProvider } from "@/context/AppContext";
 
 const adsenseClient =
   process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "ca-pub-2777699093936446";
@@ -44,7 +44,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col font-sans">
-        <AppProvider>
+        <AppProviders>
           <Navbar />
           <main className="flex-1 bg-background">
             {children}
@@ -52,7 +52,7 @@ export default function RootLayout({
           <Footer />
           <GlobalPushPopup />
           <ActionModal />
-        </AppProvider>
+        </AppProviders>
       </body>
     </html>
   );

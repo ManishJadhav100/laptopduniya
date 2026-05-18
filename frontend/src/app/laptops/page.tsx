@@ -49,7 +49,7 @@ export default async function LaptopListingPage(props: { searchParams: Promise<a
 
   return (
     <div className="bg-[#fcfdfd] min-h-screen py-10 font-sans text-gray-800">
-      <div className="max-w-[1140px] mx-auto px-4">
+      <div className="site-shell">
         
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
@@ -108,3 +108,4 @@ export default async function LaptopListingPage(props: { searchParams: Promise<a
     </div>
   );
 }
+

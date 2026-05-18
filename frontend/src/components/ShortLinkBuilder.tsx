@@ -1,14 +1,23 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
-import { Copy, ExternalLink, Link2, Loader2, Sparkles } from "lucide-react";
-import { getApiUrl } from "@/lib/api";
+import {
+  Copy,
+  ExternalLink,
+  Link2,
+  Loader2,
+  Sparkles,
+} from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
+import { readApiError } from "@/lib/auth";
 import type { ShortenedLinkRecord } from "@/lib/short-links";
 
 type LinkType = "retailer" | "deal" | "coupon";
 
 const initialForm = {
   destination_url: "",
+  alias: "",
   title: "",
   brand_name: "",
   store_name: "",
@@ -17,45 +26,67 @@ const initialForm = {
 };
 
 export default function ShortLinkBuilder() {
+  const { apiKey, fetchWithAuth, isAuthenticated, user } = useAuth();
   const [formData, setFormData] = useState(initialForm);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [result, setResult] = useState<ShortenedLinkRecord | null>(null);
   const [copied, setCopied] = useState(false);
+  const [copiedApiExample, setCopiedApiExample] = useState(false);
 
   const shortUrl = useMemo(() => {
     if (!result) return "";
-    if (typeof window === "undefined") return result.short_path;
-    return `${window.location.origin}${result.short_path}`;
+    if (typeof window !== "undefined") {
+      return `${window.location.origin}${result.short_path}`;
+    }
+    if (result.short_url) return result.short_url;
+    return result.short_path;
   }, [result]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const apiExample = useMemo(() => {
+    if (!apiKey) return "";
+
+    const baseUrl =
+      typeof window === "undefined"
+        ? "https://laptopduniya.in"
+        : window.location.origin;
+
+    return `${baseUrl}/api?api=${apiKey}&url=example.com&alias=my-custom-link`;
+  }, [apiKey]);
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (!isAuthenticated) {
+      setError("Please log in to create a short link.");
+      return;
+    }
+
     setLoading(true);
     setError("");
     setCopied(false);
 
     try {
-      const response = await fetch(getApiUrl("/short-links/"), {
+      const response = await fetchWithAuth("/short-links/", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-
       if (!response.ok) {
-        const message =
-          data.destination_url?.[0] ||
-          data.detail ||
-          "Unable to shorten this link right now.";
-        throw new Error(message);
+        throw new Error(
+          await readApiError(response, "Unable to shorten this link right now."),
+        );
       }
 
-      setResult(data as ShortenedLinkRecord);
-    } catch (err: unknown) {
+      const data = (await response.json()) as ShortenedLinkRecord;
+      setResult(data);
+    } catch (submitError) {
       setResult(null);
-      setError(err instanceof Error ? err.message : "Something went wrong.");
+      setError(
+        submitError instanceof Error
+          ? submitError.message
+          : "Something went wrong.",
+      );
     } finally {
       setLoading(false);
     }
@@ -73,6 +104,18 @@ export default function ShortLinkBuilder() {
     }
   };
 
+  const handleCopyApiExample = async () => {
+    if (!apiExample) return;
+
+    try {
+      await navigator.clipboard.writeText(apiExample);
+      setCopiedApiExample(true);
+      window.setTimeout(() => setCopiedApiExample(false), 1800);
+    } catch {
+      setCopiedApiExample(false);
+    }
+  };
+
   return (
     <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
       <div className="rounded-[2.5rem] border border-gray-100 bg-white p-8 shadow-[0_18px_45px_rgba(0,0,0,0.05)] md:p-10">
@@ -85,11 +128,50 @@ export default function ShortLinkBuilder() {
             Create a shareable short link
           </h2>
           <p className="mt-3 max-w-2xl text-sm font-bold leading-relaxed text-gray-500">
-            Submit a destination URL and we will save it in the backend,
-            generate a short code, and route visitors through the 2-page timer
-            flow with your ad placement blocks.
+            Signed-in users can save destination URLs in the backend, assign a
+            custom alias, and route visitors through the 2-page timer flow with
+            visit tracking on every short-code hit.
           </p>
         </div>
+
+        {isAuthenticated ? (
+          <div className="mb-6 rounded-[1.75rem] border border-emerald-100 bg-emerald-50/70 p-5">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-700">
+              Logged In As
+            </p>
+            <div className="mt-2 text-lg font-black text-gray-900">
+              {user?.username}
+            </div>
+            <p className="mt-2 text-xs font-bold text-gray-500">
+              Your links will be attached to this account and visible on the
+              dashboard.
+            </p>
+          </div>
+        ) : (
+          <div className="mb-6 rounded-[1.75rem] border border-amber-200 bg-amber-50 p-5">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-700">
+              Login Required
+            </p>
+            <p className="mt-2 text-sm font-bold leading-relaxed text-amber-900">
+              Register or sign in first. After that, you can create short links
+              from the site or from your personal API key.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <Link
+                href="/register"
+                className="rounded-full bg-gray-900 px-5 py-3 text-[11px] font-black uppercase tracking-[0.2em] text-white"
+              >
+                Create Account
+              </Link>
+              <Link
+                href="/login"
+                className="rounded-full border border-gray-300 px-5 py-3 text-[11px] font-black uppercase tracking-[0.2em] text-gray-700"
+              >
+                Login
+              </Link>
+            </div>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-2">
@@ -101,8 +183,11 @@ export default function ShortLinkBuilder() {
               type="url"
               placeholder="https://example.com/product-page"
               value={formData.destination_url}
-              onChange={(e) =>
-                setFormData({ ...formData, destination_url: e.target.value })
+              onChange={(event) =>
+                setFormData({
+                  ...formData,
+                  destination_url: event.target.value,
+                })
               }
               className="w-full rounded-2xl border-2 border-transparent bg-gray-50 px-5 py-5 text-sm font-bold outline-none transition-all focus:border-[#10B981] focus:bg-white"
             />
@@ -111,14 +196,14 @@ export default function ShortLinkBuilder() {
           <div className="grid gap-5 md:grid-cols-2">
             <div className="space-y-2">
               <label className="ml-1 text-[10px] font-black uppercase tracking-widest text-gray-400">
-                Title
+                Custom Alias
               </label>
               <input
                 type="text"
-                placeholder="MacBook Air M3 Offer"
-                value={formData.title}
-                onChange={(e) =>
-                  setFormData({ ...formData, title: e.target.value })
+                placeholder="macbook-deal"
+                value={formData.alias}
+                onChange={(event) =>
+                  setFormData({ ...formData, alias: event.target.value })
                 }
                 className="w-full rounded-2xl border-2 border-transparent bg-gray-50 px-5 py-5 text-sm font-bold outline-none transition-all focus:border-[#10B981] focus:bg-white"
               />
@@ -126,14 +211,31 @@ export default function ShortLinkBuilder() {
 
             <div className="space-y-2">
               <label className="ml-1 text-[10px] font-black uppercase tracking-widest text-gray-400">
+                Title
+              </label>
+              <input
+                type="text"
+                placeholder="MacBook Air M3 Offer"
+                value={formData.title}
+                onChange={(event) =>
+                  setFormData({ ...formData, title: event.target.value })
+                }
+                className="w-full rounded-2xl border-2 border-transparent bg-gray-50 px-5 py-5 text-sm font-bold outline-none transition-all focus:border-[#10B981] focus:bg-white"
+              />
+            </div>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            <div className="space-y-2">
+              <label className="ml-1 text-[10px] font-black uppercase tracking-widest text-gray-400">
                 Link Type
               </label>
               <select
                 value={formData.link_type}
-                onChange={(e) =>
+                onChange={(event) =>
                   setFormData({
                     ...formData,
-                    link_type: e.target.value as LinkType,
+                    link_type: event.target.value as LinkType,
                   })
                 }
                 className="w-full appearance-none rounded-2xl border-2 border-transparent bg-gray-50 px-5 py-5 text-sm font-black uppercase outline-none transition-all focus:border-[#10B981] focus:bg-white"
@@ -143,9 +245,7 @@ export default function ShortLinkBuilder() {
                 <option value="coupon">Coupon</option>
               </select>
             </div>
-          </div>
 
-          <div className="grid gap-5 md:grid-cols-2">
             <div className="space-y-2">
               <label className="ml-1 text-[10px] font-black uppercase tracking-widest text-gray-400">
                 Brand Name
@@ -154,13 +254,15 @@ export default function ShortLinkBuilder() {
                 type="text"
                 placeholder="Apple"
                 value={formData.brand_name}
-                onChange={(e) =>
-                  setFormData({ ...formData, brand_name: e.target.value })
+                onChange={(event) =>
+                  setFormData({ ...formData, brand_name: event.target.value })
                 }
                 className="w-full rounded-2xl border-2 border-transparent bg-gray-50 px-5 py-5 text-sm font-bold outline-none transition-all focus:border-[#10B981] focus:bg-white"
               />
             </div>
+          </div>
 
+          <div className="grid gap-5 md:grid-cols-2">
             <div className="space-y-2">
               <label className="ml-1 text-[10px] font-black uppercase tracking-widest text-gray-400">
                 Store Name
@@ -169,27 +271,27 @@ export default function ShortLinkBuilder() {
                 type="text"
                 placeholder="Amazon"
                 value={formData.store_name}
-                onChange={(e) =>
-                  setFormData({ ...formData, store_name: e.target.value })
+                onChange={(event) =>
+                  setFormData({ ...formData, store_name: event.target.value })
                 }
                 className="w-full rounded-2xl border-2 border-transparent bg-gray-50 px-5 py-5 text-sm font-bold outline-none transition-all focus:border-[#10B981] focus:bg-white"
               />
             </div>
-          </div>
 
-          <div className="space-y-2">
-            <label className="ml-1 text-[10px] font-black uppercase tracking-widest text-gray-400">
-              Coupon Code
-            </label>
-            <input
-              type="text"
-              placeholder="Optional coupon code"
-              value={formData.coupon_code}
-              onChange={(e) =>
-                setFormData({ ...formData, coupon_code: e.target.value })
-              }
-              className="w-full rounded-2xl border-2 border-transparent bg-gray-50 px-5 py-5 text-sm font-bold outline-none transition-all focus:border-[#10B981] focus:bg-white"
-            />
+            <div className="space-y-2">
+              <label className="ml-1 text-[10px] font-black uppercase tracking-widest text-gray-400">
+                Coupon Code
+              </label>
+              <input
+                type="text"
+                placeholder="Optional coupon code"
+                value={formData.coupon_code}
+                onChange={(event) =>
+                  setFormData({ ...formData, coupon_code: event.target.value })
+                }
+                className="w-full rounded-2xl border-2 border-transparent bg-gray-50 px-5 py-5 text-sm font-bold outline-none transition-all focus:border-[#10B981] focus:bg-white"
+              />
+            </div>
           </div>
 
           {error ? (
@@ -203,7 +305,11 @@ export default function ShortLinkBuilder() {
             disabled={loading}
             className="flex w-full items-center justify-center gap-3 rounded-2xl bg-gray-900 py-5 text-xs font-black uppercase tracking-[0.2em] text-white shadow-xl shadow-gray-200 transition-all hover:bg-black disabled:opacity-60"
           >
-            {loading ? <Loader2 size={18} className="animate-spin" /> : <Link2 size={18} />}
+            {loading ? (
+              <Loader2 size={18} className="animate-spin" />
+            ) : (
+              <Link2 size={18} />
+            )}
             {loading ? "Creating..." : "Shorten Link"}
           </button>
         </form>
@@ -222,6 +328,7 @@ export default function ShortLinkBuilder() {
               "Short URL opens the gateway entry route.",
               "Step 1 picks a random laptop page and shows a 10-second timer.",
               "Step 2 shows a 5-second timer before the destination URL opens.",
+              "Every hit on /s/your-code increments the backend visit counter.",
             ].map((item) => (
               <div
                 key={item}
@@ -231,6 +338,46 @@ export default function ShortLinkBuilder() {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="rounded-[2.5rem] border border-gray-100 bg-white p-8 shadow-[0_18px_45px_rgba(0,0,0,0.05)] md:p-10">
+          <p className="text-[10px] font-black uppercase tracking-[0.25em] text-gray-400">
+            API Access
+          </p>
+
+          {apiKey ? (
+            <div className="mt-5 rounded-[1.75rem] border border-gray-200 bg-gray-50 p-5">
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
+                Your API Key
+              </p>
+              <div className="mt-3 break-all text-sm font-black text-gray-900">
+                {apiKey}
+              </div>
+              <p className="mt-4 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
+                Example Request
+              </p>
+              <div className="mt-3 break-all rounded-2xl bg-gray-900 px-4 py-4 text-xs font-bold leading-relaxed text-emerald-300">
+                {apiExample}
+              </div>
+              <button
+                type="button"
+                onClick={handleCopyApiExample}
+                className="mt-4 inline-flex items-center gap-2 rounded-full border border-gray-300 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-gray-700"
+              >
+                <Copy size={14} />
+                {copiedApiExample ? "Copied" : "Copy API Example"}
+              </button>
+            </div>
+          ) : (
+            <div className="mt-5 rounded-[1.75rem] border border-dashed border-gray-200 bg-gray-50 p-8 text-center">
+              <p className="text-sm font-black text-gray-700">
+                Your personal API key appears here after login
+              </p>
+              <p className="mt-2 text-xs font-bold leading-relaxed text-gray-500">
+                It follows the AroLinks-style pattern: `/api?api=YOUR_KEY&url=...`
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="rounded-[2.5rem] border border-gray-100 bg-white p-8 shadow-[0_18px_45px_rgba(0,0,0,0.05)] md:p-10">

@@ -3,7 +3,7 @@ from .models import (
     Brand, Category, SpecGroup, SpecKey, Laptop, SpecValue,
     News, Review, Solution, BuyingGuide, BuyingGuideItem,
     Store, RetailerPrice, PushSubscription, NewsletterSubscription, Coupon,
-    UserReview, Comment, ShortenedLink
+    UserReview, Comment, ShortenedLink, ShortenerUserProfile
 )
 
 @admin.register(Brand)
@@ -141,12 +141,28 @@ class CouponAdmin(admin.ModelAdmin):
             )
         self.message_user(request, "Sent to deal hunters.")
 
+@admin.register(ShortenerUserProfile)
+class ShortenerUserProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'api_key', 'created_at', 'updated_at')
+    search_fields = ('user__username', 'user__email', 'api_key')
+    readonly_fields = ('api_key', 'created_at', 'updated_at')
+    autocomplete_fields = ('user',)
+
+
 @admin.register(ShortenedLink)
 class ShortenedLinkAdmin(admin.ModelAdmin):
-    list_display = ('short_code', 'title', 'link_type', 'brand_name', 'store_name', 'click_count', 'is_active', 'created_at')
+    list_display = (
+        'short_code', 'owner', 'title', 'link_type', 'brand_name',
+        'store_name', 'click_count', 'last_visited_at', 'is_active',
+        'created_at',
+    )
     list_filter = ('link_type', 'is_active', 'created_at')
-    search_fields = ('short_code', 'title', 'destination_url', 'brand_name', 'store_name', 'coupon_code')
-    readonly_fields = ('click_count', 'created_at', 'updated_at')
+    search_fields = (
+        'short_code', 'owner__username', 'owner__email', 'title',
+        'destination_url', 'brand_name', 'store_name', 'coupon_code',
+    )
+    readonly_fields = ('click_count', 'last_visited_at', 'created_at', 'updated_at')
+    autocomplete_fields = ('owner',)
 
 @admin.register(UserReview)
 class UserReviewAdmin(admin.ModelAdmin):

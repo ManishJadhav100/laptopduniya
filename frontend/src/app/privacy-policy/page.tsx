@@ -6,7 +6,7 @@ export default function PrivacyPolicyPage() {
     <div className="bg-white pb-24">
       {/* Header */}
       <section className="bg-gray-900 text-white py-24 mb-16 rounded-b-[4rem]">
-        <div className="max-w-[1140px] mx-auto px-4 text-center">
+        <div className="site-shell text-center">
           <div className="w-20 h-20 bg-[#10B981] rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl shadow-green-500/20">
             <Shield size={40} />
           </div>
@@ -63,3 +63,4 @@ export default function PrivacyPolicyPage() {
     </div>
   );
 }
+

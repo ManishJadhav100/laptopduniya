@@ -16,7 +16,7 @@ export default async function SolutionsPage() {
 
   return (
     <div className="bg-[#fcfdfd] min-h-screen py-10 font-sans text-gray-800">
-      <div className="max-w-[1140px] mx-auto px-4">
+      <div className="site-shell">
         
         {/* Solutions Header */}
         <div className="flex flex-col mb-12 border-b border-gray-100 pb-12">
@@ -87,3 +87,4 @@ export default async function SolutionsPage() {
     </div>
   );
 }
+

@@ -1,13 +1,52 @@
+import secrets
+
 from django.db import models
+from django.contrib.auth import get_user_model
 from django.utils.text import slugify
 from django.utils.crypto import get_random_string
 from tinymce.models import HTMLField
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
 
+User = get_user_model()
+
 
 def generate_short_link_code():
     return get_random_string(7, allowed_chars='abcdefghjkmnpqrstuvwxyz23456789')
+
+
+def generate_user_api_key():
+    return secrets.token_hex(24)
+
+
+class ShortenerUserProfile(models.Model):
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name='shortener_profile',
+    )
+    api_key = models.CharField(max_length=64, unique=True, db_index=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['user__username']
+
+    def save(self, *args, **kwargs):
+        if not self.api_key:
+            candidate = generate_user_api_key()
+            while ShortenerUserProfile.objects.filter(api_key=candidate).exists():
+                candidate = generate_user_api_key()
+            self.api_key = candidate
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.user.username} API Profile"
+
+
+def ensure_shortener_profile(user):
+    profile, _ = ShortenerUserProfile.objects.get_or_create(user=user)
+    return profile
 
 class Brand(models.Model):
     name = models.CharField(max_length=255, unique=True)
@@ -278,6 +317,13 @@ class ShortenedLink(models.Model):
         ('coupon', 'Coupon'),
     ]
 
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='shortened_links',
+    )
     short_code = models.SlugField(max_length=24, unique=True, db_index=True, blank=True)
     destination_url = models.URLField(max_length=2000)
     title = models.CharField(max_length=255, blank=True)
@@ -286,6 +332,7 @@ class ShortenedLink(models.Model):
     coupon_code = models.CharField(max_length=80, blank=True)
     link_type = models.CharField(max_length=20, choices=LINK_TYPE_CHOICES, default='retailer')
     click_count = models.PositiveIntegerField(default=0)
+    last_visited_at = models.DateTimeField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

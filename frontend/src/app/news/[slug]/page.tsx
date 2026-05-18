@@ -37,7 +37,7 @@ export default async function NewsSinglePage({ params }: { params: Promise<{ slu
 
   return (
     <div className="bg-[#fcfdfd] min-h-screen font-sans">
-      <article className="max-w-[1140px] mx-auto px-4 py-12 flex flex-col lg:flex-row gap-12">
+      <article className="site-shell py-12 flex flex-col lg:flex-row gap-12">
         
         {/* Main Content Area */}
         <div className="lg:col-span-8 flex-1">
@@ -124,3 +124,4 @@ export default async function NewsSinglePage({ params }: { params: Promise<{ slu
     </div>
   );
 }
+

@@ -22,7 +22,7 @@ export default async function BrandsPage() {
       {/* Header Section */}
       <div className="bg-white border-b border-gray-100 py-20 relative overflow-hidden">
          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-50 rounded-full blur-3xl -mr-48 -mt-48 opacity-50 transition-all" />
-         <div className="max-w-[1140px] mx-auto px-4 relative z-10">
+         <div className="site-shell relative z-10">
             <div className="flex flex-col items-center text-center">
                <span className="text-[10px] font-black text-[#10B981] uppercase tracking-[0.4em] mb-4">Manufacturer Directory</span>
                <h1 className="text-5xl md:text-7xl font-black text-gray-900 tracking-tight leading-none mb-6">
@@ -35,7 +35,7 @@ export default async function BrandsPage() {
          </div>
       </div>
 
-      <div className="max-w-[1140px] mx-auto px-4 py-20">
+      <div className="site-shell py-20">
          
          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {brands.length > 0 ? brands.map((brand: any) => (
@@ -101,3 +101,4 @@ export default async function BrandsPage() {
     </div>
   );
 }
+

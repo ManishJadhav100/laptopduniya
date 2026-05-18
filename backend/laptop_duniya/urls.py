@@ -18,9 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from core.views import LegacyShortCodeRedirectView, ShortenerApiView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api', ShortenerApiView.as_view(), name='public-shortener-api'),
+    path('s/<slug:short_code>', LegacyShortCodeRedirectView.as_view(), name='legacy-short-code'),
     path('api/v1/', include('core.urls')),
     path('tinymce/', include('tinymce.urls')),
 ]

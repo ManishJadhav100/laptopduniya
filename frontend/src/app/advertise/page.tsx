@@ -7,7 +7,7 @@ export default function AdvertisePage() {
       {/* Hero */}
       <section className="bg-gray-900 text-white py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10" />
-        <div className="max-w-[1140px] mx-auto px-4 relative z-10 text-center">
+        <div className="site-shell relative z-10 text-center">
           <h1 className="text-6xl font-black mb-6 tracking-tight uppercase italic decoration-[#10B981] underline underline-offset-[12px] decoration-8">Advertise with Us</h1>
           <p className="text-xl font-bold text-gray-400 max-w-2xl mx-auto leading-relaxed">
             Reach a targeted audience of high-intent laptop buyers and tech enthusiasts.
@@ -16,7 +16,7 @@ export default function AdvertisePage() {
       </section>
 
       {/* Stats */}
-      <section className="py-24 max-w-[1140px] mx-auto px-4">
+      <section className="py-24 site-shell">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
            <div className="p-10 bg-gray-50 rounded-[2.5rem] border border-gray-100">
               <div className="text-5xl font-black text-[#10B981] mb-2 tracking-tighter shrink-0">50K+</div>
@@ -35,7 +35,7 @@ export default function AdvertisePage() {
 
       {/* Why Us */}
       <section className="py-24 bg-gray-50 rounded-[4rem]">
-        <div className="max-w-[1140px] mx-auto px-4">
+        <div className="site-shell">
           <h2 className="text-4xl font-black text-gray-900 mb-16 text-center italic uppercase tracking-tight">Why Partner with Laptop Duniya?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {[
@@ -59,7 +59,7 @@ export default function AdvertisePage() {
       </section>
 
       {/* Contact Advertising */}
-      <section className="py-24 max-w-[1140px] mx-auto px-4 text-center">
+      <section className="py-24 site-shell text-center">
          <div className="bg-gray-900 p-16 rounded-[4rem] shadow-2xl relative overflow-hidden">
             <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#10B981] opacity-10 blur-[100px]" />
             <h2 className="text-4xl font-black text-white mb-6 uppercase tracking-tight italic">Ready to grow?</h2>
@@ -73,3 +73,4 @@ export default function AdvertisePage() {
     </div>
   );
 }
+

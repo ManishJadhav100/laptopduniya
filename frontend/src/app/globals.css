@@ -20,7 +20,7 @@
 }
 
 html {
-  background: #e5e7eb; /* Subtle gray for the viewport gutter */
+  background: var(--background);
   height: 100%;
 }
 
@@ -29,8 +29,26 @@ body {
   color: var(--foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: 1200px;
-  margin: 0 auto;
-  box-shadow: 0 0 50px rgba(0,0,0,0.05);
+  width: 100%;
+  margin: 0;
   position: relative;
+}
+
+.site-shell {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .site-shell {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-shell {
+    padding-inline: 2rem;
+  }
 }

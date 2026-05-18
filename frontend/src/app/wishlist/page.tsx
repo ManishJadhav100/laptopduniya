@@ -8,7 +8,7 @@ export default function WishlistPage() {
 
   return (
     <div className="bg-[#fcfdfd] min-h-screen py-12 font-sans">
-      <div className="max-w-[1140px] mx-auto px-4">
+      <div className="site-shell">
         
         <div className="flex flex-col mb-12 border-b border-gray-100 pb-12">
            <h1 className="text-5xl font-black text-gray-900 tracking-tight mb-4 flex items-center gap-4">
@@ -85,3 +85,4 @@ export default function WishlistPage() {
     </div>
   );
 }
+

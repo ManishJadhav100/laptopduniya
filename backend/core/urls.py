@@ -1,6 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import (
+    AuthLoginAPIView, AuthMeAPIView, AuthRefreshAPIView, AuthRegisterAPIView,
     LaptopViewSet, NewsViewSet, ReviewViewSet, 
     SolutionViewSet, BuyingGuideViewSet, CouponViewSet, 
     BrandViewSet, CategoryViewSet, HomeAPIView, BrandHubAPIView, 
@@ -24,6 +25,10 @@ router.register(r'user-reviews', UserReviewViewSet, basename='user-review')
 router.register(r'comments', CommentViewSet, basename='comment')
 
 urlpatterns = [
+    path('auth/register/', AuthRegisterAPIView.as_view(), name='auth-register'),
+    path('auth/login/', AuthLoginAPIView.as_view(), name='auth-login'),
+    path('auth/refresh/', AuthRefreshAPIView.as_view(), name='auth-refresh'),
+    path('auth/me/', AuthMeAPIView.as_view(), name='auth-me'),
     path('home/', HomeAPIView.as_view(), name='home'),
     path('brands/<slug:slug>/hub/', BrandHubAPIView.as_view(), name='brand-hub'),
     path('search/', GlobalSearchAPIView.as_view(), name='global-search'),

@@ -11,6 +11,9 @@ services:
     environment:
       - DEBUG=False
       - ALLOWED_HOSTS=194.163.162.240,localhost,laptopduniya.in,www.laptopduniya.in,backend
+      - PUBLIC_SITE_URL=https://laptopduniya.in
+      - SHORTENER_API_TOKEN=${SHORTENER_API_TOKEN:-}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY:-change-me-in-production}
       - NEXT_PUBLIC_API_URL=https://laptopduniya.in/api/v1
     restart: always
 

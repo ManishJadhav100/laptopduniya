@@ -36,7 +36,7 @@ export default async function SolutionSinglePage({ params }: { params: Promise<{
 
   return (
     <div className="bg-[#fcfdfd] min-h-screen font-sans">
-      <div className="max-w-[1140px] mx-auto px-4 py-12 flex flex-col lg:flex-row gap-12">
+      <div className="site-shell py-12 flex flex-col lg:flex-row gap-12">
         
         {/* Main Content Area */}
         <div className="flex-1">
@@ -116,3 +116,4 @@ export default async function SolutionSinglePage({ params }: { params: Promise<{
     </div>
   );
 }
+

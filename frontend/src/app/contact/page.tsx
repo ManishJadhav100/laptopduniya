@@ -4,7 +4,7 @@ import { Mail, MessageCircle, MapPin, Send } from 'lucide-react';
 export default function ContactPage() {
   return (
     <div className="bg-gray-50 min-h-screen">
-      <section className="py-24 max-w-[1140px] mx-auto px-4">
+      <section className="py-24 site-shell">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-black text-gray-900 mb-6 tracking-tight uppercase italic">Get in Touch</h1>
           <p className="text-gray-500 font-bold max-w-xl mx-auto leading-relaxed">
@@ -83,3 +83,4 @@ export default function ContactPage() {
     </div>
   );
 }
+

@@ -7,7 +7,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="py-24 bg-gray-50 border-b border-gray-100 overflow-hidden relative">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-[#10B981] opacity-[0.02] -skew-x-12 transform origin-top translate-x-1/4" />
-        <div className="max-w-[1140px] mx-auto px-4 relative z-10">
+        <div className="site-shell relative z-10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-[#10B981] bg-opacity-10 text-[#10B981] px-4 py-2 rounded-full mb-6">
               <span className="w-2 h-2 bg-[#10B981] rounded-full animate-pulse" />
@@ -25,7 +25,7 @@ export default function AboutPage() {
 
       {/* Core Values */}
       <section className="py-24">
-        <div className="max-w-[1140px] mx-auto px-4">
+        <div className="site-shell">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="group">
               <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center text-[#10B981] mb-6 group-hover:bg-[#10B981] group-hover:text-white transition-all shadow-sm">
@@ -60,7 +60,7 @@ export default function AboutPage() {
 
       {/* The Process */}
       <section className="py-24 bg-gray-900 text-white rounded-t-[4rem]">
-        <div className="max-w-[1140px] mx-auto px-4">
+        <div className="site-shell">
           <div className="text-center mb-20">
             <h2 className="text-4xl font-black tracking-tight mb-4 uppercase italic">How We Review</h2>
             <div className="h-1.5 w-24 bg-[#10B981] mx-auto rounded-full" />
@@ -84,3 +84,4 @@ export default function AboutPage() {
     </div>
   );
 }
+

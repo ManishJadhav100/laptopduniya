@@ -42,7 +42,7 @@ const NewsletterSection: React.FC = () => {
     return (
       <section className="py-20 bg-[#10B981] relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10" />
-        <div className="max-w-[1140px] mx-auto px-4 relative z-10">
+        <div className="site-shell relative z-10">
           <div className="bg-white rounded-[3rem] p-12 text-center shadow-2xl animate-in zoom-in duration-500">
             <div className="w-24 h-24 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-8">
               <CheckCircle2 className="text-[#10B981] w-12 h-12" />
@@ -61,7 +61,7 @@ const NewsletterSection: React.FC = () => {
     <section className="py-24 bg-gray-50 relative overflow-hidden border-t border-gray-100">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[#10B981] opacity-[0.03] -skew-x-12 transform origin-top translate-x-1/4" />
       
-      <div className="max-w-[1140px] mx-auto px-4 relative z-10">
+      <div className="site-shell relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           
           <div className="flex flex-col gap-8">
@@ -166,3 +166,4 @@ const NewsletterSection: React.FC = () => {
 };
 
 export default NewsletterSection;
+

@@ -52,7 +52,7 @@ export default async function BrandHubPage({ params }: { params: Promise<{ slug:
       
       {/* BRAND HERO SECTION */}
       <div className="bg-white border-b border-gray-100 py-16 shadow-inner">
-         <div className="max-w-[1140px] mx-auto px-4 flex flex-col items-center text-center">
+         <div className="site-shell flex flex-col items-center text-center">
             <div className="w-24 h-24 bg-gray-50 rounded-2xl border-2 border-gray-100 flex items-center justify-center mb-8 shrink-0 shadow-lg p-4">
                {brand.logo ? <img src={formatImageUrl(brand.logo)} alt={brand.name} className="max-h-16 object-contain" /> : <div className="text-2xl font-black text-gray-300">{brand.name[0]}</div>}
             </div>
@@ -69,7 +69,7 @@ export default async function BrandHubPage({ params }: { params: Promise<{ slug:
          </div>
       </div>
 
-      <div className="max-w-[1140px] mx-auto px-4 py-12 flex flex-col gap-20">
+      <div className="site-shell py-12 flex flex-col gap-20">
          
          {/* TOP DEALS & COUPONS */}
          {coupons.length > 0 && (
@@ -209,3 +209,4 @@ export default async function BrandHubPage({ params }: { params: Promise<{ slug:
     </div>
   );
 }
+

@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="bg-white border-t-4 border-[#10B981] pt-16 pb-8 font-sans">
-      <div className="max-w-[1240px] mx-auto px-4">
+      <div className="site-shell">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
           {/* Brand Column */}

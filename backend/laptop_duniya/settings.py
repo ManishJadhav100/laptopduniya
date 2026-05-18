@@ -27,6 +27,17 @@ SECRET_KEY = 'django-insecure-t4ae1nq#5omb_60sag5$ahkrad%-_2agijjjmpj1bl%mwyam%p
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+SHORTENER_API_TOKEN = os.environ.get('SHORTENER_API_TOKEN', '')
+PUBLIC_SITE_URL = os.environ.get('PUBLIC_SITE_URL', '').rstrip('/')
+JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY', SECRET_KEY)
+JWT_ACCESS_TOKEN_LIFETIME_SECONDS = int(
+    os.environ.get('JWT_ACCESS_TOKEN_LIFETIME_SECONDS', '3600')
+)
+JWT_REFRESH_TOKEN_LIFETIME_SECONDS = int(
+    os.environ.get('JWT_REFRESH_TOKEN_LIFETIME_SECONDS', '604800')
+)
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Application definition
@@ -131,6 +142,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_AUTHENTICATION_CLASSES': ['core.jwt_auth.JWTAuthentication'],
 }
 
 TINYMCE_DEFAULT_CONFIG = {

@@ -71,7 +71,7 @@ export default async function Home() {
        </div>
       
       {/* AI Matchmaker Section - Ultra Premium Redesign */}
-      <div className="max-w-[1140px] mx-auto px-4 lg:px-8 mt-24 w-full relative">
+      <div className="site-shell lg:px-8 mt-24 w-full relative">
          <div className="absolute -top-10 -left-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl z-0"></div>
          <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl z-0"></div>
 
@@ -101,7 +101,7 @@ export default async function Home() {
          </div>
       </div>
 
-      <div className="max-w-[1140px] mx-auto px-4 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 mt-24">
+      <div className="site-shell w-full grid grid-cols-1 lg:grid-cols-12 gap-12 mt-24">
          
          {/* Main Content Column (Deals Feed) */}
          <div className="lg:col-span-8 flex flex-col gap-10">
@@ -176,3 +176,4 @@ export default async function Home() {
     </div>
   );
 }
+

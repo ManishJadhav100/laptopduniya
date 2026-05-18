@@ -103,7 +103,7 @@ export default function ComparePage() {
 
   return (
     <div className="bg-[#fcfdfd] min-h-screen py-10 font-sans overflow-x-auto">
-      <div className="max-w-[1140px] mx-auto px-4">
+      <div className="site-shell">
         
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-8">
            <div className="flex flex-col">
@@ -248,3 +248,4 @@ export default function ComparePage() {
     </div>
   );
 }
+

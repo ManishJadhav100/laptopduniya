@@ -4,4 +4,4 @@ docker-compose build --no-cache
 
 docker-compose up -d
 
-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
+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

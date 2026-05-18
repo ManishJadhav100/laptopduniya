@@ -54,8 +54,7 @@ export default function LoginPage() {
             </h1>
             <p className="mt-5 max-w-xl text-sm font-bold leading-relaxed text-slate-300">
               Your dashboard shows every link you created, total views, active
-              status, and the personal API key you can use with the AroLinks-style
-              `/api` endpoint.
+              status, and the personal API key you can use with the `/api` endpoint.
             </p>
             <div className="mt-8 grid gap-4">
               {[

@@ -374,7 +374,7 @@ export default function ShortLinkBuilder() {
                 Your personal API key appears here after login
               </p>
               <p className="mt-2 text-xs font-bold leading-relaxed text-gray-500">
-                It follows the AroLinks-style pattern: `/api?api=YOUR_KEY&url=...`
+                It follows the pattern: `/api?api=YOUR_KEY&url=...`
               </p>
             </div>
           )}

@@ -67,7 +67,7 @@ export default function RegisterPage() {
               </h1>
               <p className="mt-4 text-sm font-bold leading-relaxed text-gray-500">
                 Every new account gets its own API key so the user can create
-                short links from the site or through the AroLinks-style backend
+                short links from the site or through the backend
                 endpoint.
               </p>
             </div>

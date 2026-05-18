@@ -26,8 +26,6 @@ export default function CountdownAction({
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    setRemainingSeconds(seconds);
-
     const intervalId = window.setInterval(() => {
       setRemainingSeconds((currentValue) => {
         if (currentValue <= 1) {
@@ -67,7 +65,7 @@ export default function CountdownAction({
         type="button"
         disabled={isDisabled}
         onClick={handleClick}
-        className={`flex h-14 w-full items-center justify-center rounded-2xl px-6 text-center text-sm font-black uppercase tracking-[0.2em] transition-all ${
+        className={`flex min-h-14 w-full items-center justify-center rounded-2xl px-4 py-4 text-center text-[11px] font-black uppercase leading-tight tracking-[0.16em] transition-all sm:px-6 sm:text-sm sm:tracking-[0.2em] ${
           isDisabled
             ? "cursor-not-allowed bg-gray-200 text-gray-500"
             : "bg-[#10B981] text-white shadow-xl shadow-emerald-500/20 hover:bg-[#059669]"

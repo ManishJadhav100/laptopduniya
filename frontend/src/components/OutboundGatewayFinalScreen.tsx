@@ -34,28 +34,27 @@ export default function OutboundGatewayFinalScreen({
   }
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.16),_transparent_28%),linear-gradient(180deg,#f8fafc,#eef6f4)] px-4 py-12">
-      <div className="mx-auto flex max-w-4xl flex-col gap-8">
-        <div className="overflow-hidden rounded-[2.5rem] border border-gray-200 bg-white shadow-[0_30px_80px_rgba(15,23,42,0.08)]">
-          <div className="border-b border-gray-100 bg-gray-900 px-8 py-8 text-white">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.16),_transparent_28%),linear-gradient(180deg,#f8fafc,#eef6f4)] px-3 py-6 sm:px-4 sm:py-12">
+      <div className="mx-auto flex max-w-5xl flex-col gap-6 sm:gap-8">
+        <div className="overflow-hidden rounded-[1.75rem] border border-gray-200 bg-white shadow-[0_30px_80px_rgba(15,23,42,0.08)] sm:rounded-[2.5rem]">
+          <div className="border-b border-gray-100 bg-gray-900 px-5 py-6 text-white sm:px-8 sm:py-8">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.25em] text-emerald-200">
               <Clock3 size={14} />
               Step 2 of 2
             </div>
 
-            <h1 className="text-3xl font-black leading-tight md:text-4xl">
+            <h1 className="text-[2.15rem] font-black leading-[1.05] sm:text-3xl md:text-4xl">
               Final wait page before the destination URL opens
             </h1>
 
-            <p className="mt-4 max-w-2xl text-sm font-bold leading-relaxed text-slate-300">
-              Short
-              5-second countdown before continuing to the final link.
+            <p className="mt-4 max-w-2xl text-sm font-bold leading-relaxed text-slate-300 sm:text-[15px]">
+              Short 5-second countdown before continuing to the final link.
             </p>
           </div>
 
-          <div className="grid gap-8 p-6 md:grid-cols-[1.1fr_0.9fr] md:p-8">
+          <div className="grid gap-5 p-4 sm:gap-6 sm:p-6 md:grid-cols-[1.1fr_0.9fr] md:gap-8 md:p-8">
             <div className="flex flex-col gap-6">
-              <div className="rounded-[1.75rem] border border-gray-200 bg-[#f8fafc] p-6">
+              <div className="rounded-[1.5rem] border border-gray-200 bg-[#f8fafc] p-4 sm:rounded-[1.75rem] sm:p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="rounded-2xl bg-emerald-50 p-3 text-[#10B981]">
                     <TicketPercent size={20} />
@@ -71,7 +70,7 @@ export default function OutboundGatewayFinalScreen({
                 </div>
 
                 <div className="flex flex-col gap-3 text-sm font-bold text-gray-600">
-                  <div className="flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white px-4 py-3">
+                  <div className="flex flex-col items-start justify-between gap-2 rounded-2xl border border-gray-200 bg-white px-4 py-3 sm:flex-row sm:items-center sm:gap-4">
                     <span className="uppercase tracking-widest text-gray-400">
                       Type
                     </span>
@@ -81,7 +80,7 @@ export default function OutboundGatewayFinalScreen({
                   </div>
 
                   {payload.brandName ? (
-                    <div className="flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white px-4 py-3">
+                    <div className="flex flex-col items-start justify-between gap-2 rounded-2xl border border-gray-200 bg-white px-4 py-3 sm:flex-row sm:items-center sm:gap-4">
                       <span className="uppercase tracking-widest text-gray-400">
                         Brand
                       </span>
@@ -92,7 +91,7 @@ export default function OutboundGatewayFinalScreen({
                   ) : null}
 
                   {payload.storeName ? (
-                    <div className="flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white px-4 py-3">
+                    <div className="flex flex-col items-start justify-between gap-2 rounded-2xl border border-gray-200 bg-white px-4 py-3 sm:flex-row sm:items-center sm:gap-4">
                       <span className="uppercase tracking-widest text-gray-400">
                         Store
                       </span>
@@ -103,7 +102,7 @@ export default function OutboundGatewayFinalScreen({
                   ) : null}
 
                   {payload.couponCode ? (
-                    <div className="flex items-center justify-between gap-4 rounded-2xl border border-dashed border-emerald-300 bg-emerald-50 px-4 py-3">
+                    <div className="flex flex-col items-start justify-between gap-2 rounded-2xl border border-dashed border-emerald-300 bg-emerald-50 px-4 py-3 sm:flex-row sm:items-center sm:gap-4">
                       <span className="uppercase tracking-widest text-emerald-700">
                         Coupon Code
                       </span>
@@ -121,24 +120,24 @@ export default function OutboundGatewayFinalScreen({
               />
             </div>
 
-            <div className="flex flex-col justify-between gap-6 rounded-[1.75rem] border border-gray-200 bg-white p-6 shadow-sm">
+            <div className="flex flex-col justify-between gap-6 rounded-[1.5rem] border border-gray-200 bg-white p-4 shadow-sm sm:rounded-[1.75rem] sm:p-6">
               <div>
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-[10px] font-black uppercase tracking-[0.25em] text-[#10B981]">
                   <ShieldCheck size={14} />
                   Secure handoff
                 </div>
 
-                <h3 className="text-2xl font-black leading-tight text-gray-900">
+                <h3 className="text-[1.85rem] font-black leading-[1.08] text-gray-900 sm:text-2xl">
                   Continue to destination after the short 5-second timer
                 </h3>
 
-                <p className="mt-4 text-sm font-bold leading-relaxed text-gray-500">
+                <p className="mt-4 text-sm font-bold leading-relaxed text-gray-500 sm:text-[15px]">
                   When the button unlocks, you will be sent to the final
                   destination URL in this tab.
                 </p>
               </div>
 
-              <div className="rounded-[1.5rem] border border-gray-200 bg-[#f8fafc] p-5">
+              <div className="rounded-[1.5rem] border border-gray-200 bg-[#f8fafc] p-4 sm:p-5">
                 <CountdownAction
                   seconds={5}
                   href={payload.targetUrl}

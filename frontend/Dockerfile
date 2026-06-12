@@ -3,8 +3,7 @@ ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 WORKDIR /app
 COPY package*.json ./
-# Re-resolve platform-specific optional native packages for Alpine during image builds.
-RUN npm install --include=optional
+RUN npm ci --include=optional
 COPY . .
 RUN npm run build
 

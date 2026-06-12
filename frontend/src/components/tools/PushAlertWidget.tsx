@@ -113,7 +113,7 @@ const PushAlertWidget: React.FC<PushAlertWidgetProps> = ({ laptopSlug, laptopTit
       <p className="text-xs font-bold text-gray-500 mb-8 leading-relaxed">
         {isSubscribed 
           ? `You're all set! We'll push a notification to your browser as soon as the price for this ${laptopTitle} drops.`
-          : "Get a native browser notification instantly when this laptop hits your target budget. No phone number required."
+          : "Get a native browser notification instantly when this phone hits your target budget. No phone number required."
         }
       </p>
 

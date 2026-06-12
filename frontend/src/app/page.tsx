@@ -1,10 +1,8 @@
 import Link from "next/link";
-import { Laptop, TicketPercent, ShieldCheck, HelpCircle, Sparkles, CheckCircle2 } from "lucide-react";
+import { TicketPercent, HelpCircle, Sparkles, CheckCircle2 } from "lucide-react";
 import LaptopCard from "@/components/LaptopCard";
 import MatchmakerQuiz from "@/components/tools/MatchmakerQuiz";
 import NewsletterSection from "@/components/NewsletterSection";
-import Image from "next/image";
-import { formatImageUrl } from "@/lib/url-utils";
 import { fetchApiJson } from "@/lib/api";
 import SearchAutocomplete from "@/components/SearchAutocomplete";
 
@@ -23,11 +21,11 @@ export default async function Home() {
   const guides = data?.buying_guides_highlights || [];
   const brands = data?.popular_brands || [
     { name: 'Apple', logo: null, color: '#f5f5f7' },
-    { name: 'Lenovo', logo: null, color: '#ffebee' },
-    { name: 'Dell', logo: null, color: '#e3f2fd' },
-    { name: 'HP', logo: null, color: '#e1f5fe' },
-    { name: 'ASUS', logo: null, color: '#f3e5f5' },
-    { name: 'Acer', logo: null, color: '#e8f5e9' }
+    { name: 'Samsung', logo: null, color: '#e3f2fd' },
+    { name: 'Google', logo: null, color: '#fef3c7' },
+    { name: 'OnePlus', logo: null, color: '#fee2e2' },
+    { name: 'Xiaomi', logo: null, color: '#ffedd5' },
+    { name: 'Nothing', logo: null, color: '#f3f4f6' }
   ];
 
   return (
@@ -43,15 +41,15 @@ export default async function Home() {
 
           <div className="max-w-[800px] mx-auto px-4 relative z-10 w-full">
               <h1 className="text-4xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-emerald-500 mb-6 tracking-tight">
-                  Find Your Ultimate Laptop Deal
+                  Discover the Right Phone Faster
               </h1>
               <p className="text-gray-300 font-medium mb-12 text-xl max-w-[600px] mx-auto leading-relaxed">
-                  Compare top-rated machines, verify community reviews, and track real-time price drops.
+                  Compare camera phones, battery beasts, foldables, and value picks with tracked prices and expert guidance.
               </p>
               
               {/* Huge GrabOn Style Search */}
               <div className="hidden md:flex relative shadow-[0_0_50px_rgba(16,185,129,0.15)] rounded-full max-w-[700px] mx-auto z-50 transform hover:scale-[1.01] transition-transform">
-                  <SearchAutocomplete placeholder="Search 5,000+ laptops and trending deals..." />
+                  <SearchAutocomplete placeholder="Search mobiles, chipsets, cameras, and deals..." />
               </div>
 
               {/* Brand bubbles */}
@@ -81,11 +79,11 @@ export default async function Home() {
                <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-400 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-8 w-fit mx-auto lg:mx-0 border border-emerald-500/20 shadow-sm">
                   <Sparkles size={12} className="text-emerald-400" /> AI Powered
                </div>
-               <h2 className="text-3xl lg:text-4xl font-black text-white mb-6 tracking-tight leading-tight">Can't decide? Let our AI find your perfect match.</h2>
-               <p className="text-gray-400 font-medium text-sm leading-relaxed mb-10">Tell us your budget and usage, and we'll analyze specs to find the best value laptops for you.</p>
+               <h2 className="text-3xl lg:text-4xl font-black text-white mb-6 tracking-tight leading-tight">Need help choosing? Let our selector narrow it down.</h2>
+               <p className="text-gray-400 font-medium text-sm leading-relaxed mb-10">Tell us what matters most and we'll surface the best phone matches for your budget and priorities.</p>
                
                <div className="flex flex-col gap-5 text-left">
-                  {['Personalized Picks', 'Real-time Price Sync', 'Expert Benchmarks'].map((feat) => (
+                  {['Personalized Picks', 'Tracked Pricing', 'Camera-First Insights'].map((feat) => (
                      <div key={feat} className="flex items-center gap-4 text-[11px] font-black text-gray-300 uppercase tracking-widest bg-white/5 p-3 rounded-2xl border border-white/5 backdrop-blur-md">
                         <div className="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
                            <CheckCircle2 size={12} className="text-emerald-400" />
@@ -112,7 +110,7 @@ export default async function Home() {
                     </div>
                     <h2 className="text-[22px] font-black text-gray-900 tracking-tight">Trending Deals</h2>
                  </div>
-                 <Link href="/laptops" className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] px-4 py-2 rounded-full border border-gray-200 hover:border-emerald-500 hover:text-emerald-500 transition-colors shadow-sm bg-white">View All</Link>
+                 <Link href="/mobiles" className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] px-4 py-2 rounded-full border border-gray-200 hover:border-emerald-500 hover:text-emerald-500 transition-colors shadow-sm bg-white">View All</Link>
              </div>
 
              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -165,7 +163,7 @@ export default async function Home() {
                   <HelpCircle className="w-8 h-8 text-indigo-500 animate-pulse" />
                </div>
                <h3 className="font-black text-gray-900 text-xl mb-3 tracking-tight">Tech Support</h3>
-               <p className="text-[11px] text-gray-500 font-medium mb-8 leading-relaxed max-w-[200px]">Step-by-step troubleshooting for your laptop hardware issues.</p>
+               <p className="text-[11px] text-gray-500 font-medium mb-8 leading-relaxed max-w-[200px]">Troubleshooting guides for battery drain, heating, cameras, and connectivity issues.</p>
                <Link href="/solutions" className="w-full py-4 font-black text-[10px] bg-indigo-500 text-white rounded-xl uppercase tracking-[0.2em] hover:bg-indigo-600 transition-colors shadow-lg shadow-indigo-500/20">
                   Browse Fixes
                </Link>

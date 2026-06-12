@@ -54,7 +54,7 @@ export default function LaptopGatewayOverlay({
         <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
           <div className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.18),_transparent_40%),linear-gradient(135deg,#0f172a,#111827_55%,#1f2937)] p-5 pr-16 text-white sm:p-7 sm:pr-20 md:p-10">
             <Link
-              href={`/laptops/${laptop.slug}`}
+              href={`/mobiles/${laptop.slug}`}
               aria-label="Close redirect popup"
               className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20 sm:right-5 sm:top-5"
             >
@@ -109,7 +109,7 @@ export default function LaptopGatewayOverlay({
 
                 <div className="flex min-w-0 flex-1 flex-col gap-2">
                   <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#10B981]">
-                    Random Laptop Page
+                    Random Mobile Page
                   </span>
                   <h3 className="text-base font-black leading-tight text-gray-900 sm:text-lg">
                     {laptop.title}

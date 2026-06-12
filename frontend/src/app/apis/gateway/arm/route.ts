@@ -11,8 +11,8 @@ import { normalizeGatewayAccessPath } from "@/lib/outbound-gateway";
  */
 const ALLOWED_ORIGINS = [
   "http://localhost:3000",
-  "https://laptopduniya.in",
-  "https://www.laptopduniya.in",
+  "https://phoneradar.in",
+  "https://www.phoneradar.in",
 ];
 
 /**

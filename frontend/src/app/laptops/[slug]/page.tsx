@@ -1,11 +1,10 @@
-import { Check, X, Star, Cpu, Battery, MonitorPlay, Zap, HardDrive, ShieldCheck, Tag, ChevronRight, Truck, TicketPercent, HelpCircle, FileText, Laptop, Info, Award, Crown, HandMetal, ArrowRight } from "lucide-react";
+import { Check, X, Star, Cpu, Battery, MonitorPlay, Zap, ShieldCheck, ChevronRight, HelpCircle, Smartphone, Info, Award, HandMetal, ArrowRight } from "lucide-react";
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ProductActions from "@/components/ProductActions";
 import PriceChart from "@/components/PriceChart";
 import SoftwareCompatibility from '@/components/tools/SoftwareCompatibility';
 import FutureProofMeter from '@/components/tools/FutureProofMeter';
-import PushAlertWidget from '@/components/tools/PushAlertWidget';
 import { ReviewSystem } from '@/components/ReviewSystem';
 import { PurchaseExplorer, PurchaseProvider } from '@/components/PurchaseExplorer';
 import { getCanonicalUrl, formatImageUrl } from '@/lib/url-utils';
@@ -19,14 +18,14 @@ import { fetchApiJson, fetchApiList } from "@/lib/api";
 import { buildOutboundGatewayStepTwoUrl, buildShortCodeStepTwoUrl, getShortCodeFromSearchParams, isLaptopGatewayRequest, parseOutboundGatewayPayload, type GatewaySearchParams } from "@/lib/outbound-gateway";
 
 async function getLaptop(slug: string) {
-  return fetchApiJson<any>(`/laptops/${slug}/`, { next: { revalidate: 300 } });
+  return fetchApiJson<any>(`/mobiles/${slug}/`, { next: { revalidate: 300 } });
 }
 
 async function getRelatedContent(brandSlug: string, currentSlug: string, basePrice: number, categoryId?: number) {
     const relatedPath = brandSlug
-      ? `/laptops/?brand=${encodeURIComponent(brandSlug)}&limit=7`
-      : "/laptops/?limit=7";
-    const betterPath = `/laptops/?price_min=${basePrice * 1.05}&price_max=${basePrice * 1.5}&limit=7`;
+      ? `/mobiles/?brand=${encodeURIComponent(brandSlug)}&limit=7`
+      : "/mobiles/?limit=7";
+    const betterPath = `/mobiles/?price_min=${basePrice * 1.05}&price_max=${basePrice * 1.5}&limit=7`;
 
     const [news, reviews, solutions, relatedLaptopsRaw, betterLaptopsRaw] = await Promise.all([
         fetchApiList<any>("/news/?limit=6", { next: { revalidate: 300 } }),
@@ -55,21 +54,21 @@ async function getRelatedContent(brandSlug: string, currentSlug: string, basePri
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
   const laptop = await getLaptop(resolvedParams.slug);
-  if (!laptop) return { title: 'Laptop Not Found' };
+  if (!laptop) return { title: 'Mobile Not Found' };
   
-  const siteTitle = laptop.meta_title || `${laptop.title} Specs & Best Deals - Laptop Duniya`;
+  const siteTitle = laptop.meta_title || `${laptop.title} Specs & Best Deals - PhoneRadar`;
   
   // Rich Meta Description Logic
   let description = laptop.meta_description || "";
   if (description.length < 50) {
-    description = `Expert review, full specs, and best live prices for the ${laptop.title}. Featuring ${laptop.processor_type}, ${laptop.ram_gb}GB RAM, and ${laptop.gpu_type}. Verified deals only at Laptop Duniya.`;
+    description = `Expert review, full specs, and best live prices for the ${laptop.title}. Featuring ${laptop.processor_type}, ${laptop.ram_gb}GB RAM, and ${laptop.gpu_type}. Verified deals only at PhoneRadar.`;
   }
 
   return {
     title: siteTitle,
     description: description,
     alternates: {
-      canonical: getCanonicalUrl(`/laptops/${laptop.slug}`),
+      canonical: getCanonicalUrl(`/mobiles/${laptop.slug}`),
     },
     openGraph: {
       title: siteTitle,
@@ -89,7 +88,7 @@ export default async function LaptopDetailPage({
   const [resolvedParams, resolvedSearchParams] = await Promise.all([params, searchParams]);
   const laptop = await getLaptop(resolvedParams.slug);
 
-  if (!laptop) return <div className="py-32 text-center text-2xl font-bold">Laptop not found</div>;
+  if (!laptop) return <div className="py-32 text-center text-2xl font-bold">Phone not found</div>;
 
   const isGatewayRequest = isLaptopGatewayRequest(resolvedSearchParams);
   const gatewayShortCode = isGatewayRequest
@@ -115,22 +114,20 @@ export default async function LaptopDetailPage({
     });
   }
 
-  const review = laptop.expert_review;
-
   const jsonLd = {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": laptop.title,
     "image": laptop.image ? formatImageUrl(laptop.image) : "",
-    "description": laptop.meta_description || `${laptop.title} premium laptop review and specs.`,
+    "description": laptop.meta_description || `${laptop.title} smartphone review and specs.`,
     "brand": {
       "@type": "Brand",
       "name": laptop.brand?.name || "Premium"
     },
-    "sku": `LD-${laptop.id}`,
+    "sku": `PR-${laptop.id}`,
     "offers": {
       "@type": "Offer",
-      "url": getCanonicalUrl(`/laptops/${laptop.slug}`),
+      "url": getCanonicalUrl(`/mobiles/${laptop.slug}`),
       "priceCurrency": "INR",
       "price": laptop.base_price,
       "itemCondition": "https://schema.org/NewCondition",
@@ -174,7 +171,7 @@ export default async function LaptopDetailPage({
         <div className="px-1 text-[11px] font-black text-gray-400 mb-6 flex items-center gap-2 uppercase tracking-widest">
            <Link href="/" className="hover:text-[#10B981] transition-colors">Home</Link>
            <ChevronRight size={10} />
-           <Link href="/laptops" className="hover:text-[#10B981] transition-colors">Laptops</Link>
+           <Link href="/mobiles" className="hover:text-[#10B981] transition-colors">Mobiles</Link>
            <ChevronRight size={10} />
            <span className="text-[#10B981] font-black">{laptop.title}</span>
         </div>
@@ -198,7 +195,7 @@ export default async function LaptopDetailPage({
                        <div className="absolute inset-0 bg-emerald-500/10 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity"></div>
                        <Image 
                           src={formatImageUrl(laptop.image)} 
-                          alt={`${laptop.title} ${laptop.processor_type} Gaming Laptop - Laptop Duniya Expert Selection`} 
+                          alt={`${laptop.title} ${laptop.processor_type} smartphone - PhoneRadar expert pick`} 
                           width={600}
                           height={450}
                           priority={true}
@@ -208,7 +205,7 @@ export default async function LaptopDetailPage({
                     </div>
                   ) : (
                     <div className="flex flex-col items-center justify-center text-gray-200">
-                        <Laptop className="w-48 h-48" />
+                        <Smartphone className="w-48 h-48" />
                         <span className="text-[10px] font-black uppercase tracking-widest mt-4">No Media Available</span>
                     </div>
                   )}
@@ -234,13 +231,13 @@ export default async function LaptopDetailPage({
                 <div className="mt-8 grid grid-cols-2 gap-4">
                    <div className="p-4 bg-gray-50/50 border border-gray-100 rounded-2xl group transition-all hover:bg-white hover:shadow-xl">
                       <Cpu size={18} className="text-[#10B981] mb-2" />
-                      <span className="text-[10px] font-black text-gray-400 uppercase block tracking-widest">Platform</span>
+                      <span className="text-[10px] font-black text-gray-400 uppercase block tracking-widest">Chipset</span>
                       <span className="text-xs font-black text-gray-800">{laptop.processor_type || 'Modern Chip'}</span>
                    </div>
                    <div className="p-4 bg-gray-50/50 border border-gray-100 rounded-2xl group transition-all hover:bg-white hover:shadow-xl">
                       <Zap size={18} className="text-[#10B981] mb-2" />
-                      <span className="text-[10px] font-black text-gray-400 uppercase block tracking-widest">Memory</span>
-                      <span className="text-xs font-black text-gray-800">{laptop.ram_gb || 16}GB DDR5</span>
+                      <span className="text-[10px] font-black text-gray-400 uppercase block tracking-widest">RAM</span>
+                      <span className="text-xs font-black text-gray-800">{laptop.ram_gb || 8}GB RAM</span>
                    </div>
                 </div>
 
@@ -250,16 +247,16 @@ export default async function LaptopDetailPage({
                     <div className="flex items-center justify-between mb-8">
                         <div className="flex flex-col">
                            <h4 className="text-[10px] font-black text-[#10B981] uppercase tracking-[0.3em] leading-none mb-1">Performance Radar</h4>
-                           <span className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">AI Benchmark Results</span>
+                           <span className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Phone Use Estimates</span>
                         </div>
                         <Info size={14} className="text-gray-600" />
                     </div>
                     
                     <div className="space-y-6">
                         {[
-                            { label: 'Workstation', score: (laptop.ram_gb >= 16 ? 95 : 70), icon: <Award size={12} />, color: 'from-blue-400 to-blue-600' },
-                            { label: 'Gaming/Render', score: (laptop.gpu_type?.toLowerCase().includes('rtx') ? 92 : 40), icon: <MonitorPlay size={12} />, color: 'from-orange-400 to-red-600' },
-                            { label: 'Architecture', score: (laptop.processor_type?.toLowerCase().includes('i7') || laptop.processor_type?.toLowerCase().includes('m3') ? 88 : 60), icon: <Cpu size={12} />, color: 'from-purple-400 to-indigo-600' },
+                            { label: 'Photography', score: (laptop.gpu_type?.toLowerCase().includes('periscope') || laptop.gpu_type?.toLowerCase().includes('telephoto') || laptop.gpu_type?.toLowerCase().includes('50mp') ? 93 : 74), icon: <Star size={12} />, color: 'from-blue-400 to-cyan-600' },
+                            { label: 'Gaming', score: (laptop.processor_type?.toLowerCase().includes('snapdragon 8') || laptop.processor_type?.toLowerCase().includes('a18') || laptop.processor_type?.toLowerCase().includes('dimensity 9400') ? 94 : 72), icon: <MonitorPlay size={12} />, color: 'from-orange-400 to-red-600' },
+                            { label: 'Battery', score: (laptop.ram_gb >= 12 ? 89 : 75), icon: <Battery size={12} />, color: 'from-emerald-400 to-green-600' },
                         ].map((p) => (
                             <div key={p.label} className="flex flex-col gap-2">
                                 <div className="flex justify-between items-center px-1">
@@ -293,7 +290,7 @@ export default async function LaptopDetailPage({
             </div>
             <SoftwareCompatibility ram_gb={laptop.ram_gb || 0} processor={laptop.processor_type || ''} />
             <FutureProofMeter ram_gb={laptop.ram_gb || 0} processor={laptop.processor_type || ''} gpu={laptop.gpu_type || ''} />
-            <ShareButtons title={`Check out this deal on ${laptop.title} at Laptop Duniya`} shareText="Share This Deal" />
+            <ShareButtons title={`Check out this deal on ${laptop.title} at PhoneRadar`} shareText="Share This Deal" />
         </div>
 
         {/* SECTION 3: DEAL CENTRAL (Store Selector - Full Width) */}
@@ -329,8 +326,8 @@ export default async function LaptopDetailPage({
                           <Cpu size={24} />
                        </div>
                        <div className="flex flex-col">
-                          <h2 className="text-2xl font-black text-gray-900 tracking-tight">Technical Architecture</h2>
-                          <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Model Specs & Components</span>
+                          <h2 className="text-2xl font-black text-gray-900 tracking-tight">Technical Specifications</h2>
+                          <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Phone Specs & Features</span>
                        </div>
                     </div>
                     <Award size={20} className="text-yellow-400" />
@@ -382,7 +379,7 @@ export default async function LaptopDetailPage({
                         <h4 className="text-xl font-black text-gray-900 uppercase tracking-tight">Expert Shootout</h4>
                     </div>
                     <p className="text-sm font-bold text-gray-500 max-w-xl">
-                        Not sure yet? Compare this laptop with the <strong>Top Rated</strong> models in this category before making your final choice.
+                        Not sure yet? Compare this phone with the <strong>Top Rated</strong> models in this category before making your final choice.
                     </p>
                 </div>
                 <Link href={`/compare?p1=${laptop.slug}`} className="whitespace-nowrap flex items-center justify-between bg-white px-8 py-5 rounded-2xl border border-emerald-100 hover:border-emerald-500 transition-all group shadow-sm font-black text-xs uppercase tracking-widest text-emerald-600 gap-4">

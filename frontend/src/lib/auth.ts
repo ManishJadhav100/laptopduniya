@@ -22,7 +22,7 @@ export interface AuthSession {
   tokens: AuthTokens;
 }
 
-const AUTH_STORAGE_KEY = "laptop-duniya-auth-session";
+const AUTH_STORAGE_KEY = "phoneradar-auth-session";
 
 function getFirstErrorMessage(
   value: unknown,

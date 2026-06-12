@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, Laptop, ShieldCheck, TicketPercent, Share2, Link as LinkIcon } from 'lucide-react';
+import { ArrowLeft, Smartphone, ShieldCheck, TicketPercent, Share2, Link as LinkIcon } from 'lucide-react';
 import AuthorBox from '@/components/AuthorBox';
 import { formatImageUrl } from '@/lib/url-utils';
 import ShareButtons from '@/components/ShareButtons';
@@ -64,7 +64,7 @@ export default async function GuideSinglePage({ params }: { params: Promise<{ sl
                          </span>
                          <div className="flex flex-col">
                             <span className="text-[10px] font-black text-[#10B981] uppercase tracking-widest mb-1">Expert's Choice</span>
-                            <Link href={`/laptops/${laptop.slug}`} className="hover:underline">
+                            <Link href={`/mobiles/${laptop.slug}`} className="hover:underline">
                                <h2 className="text-2xl font-black text-gray-900 tracking-tight">{laptop.title}</h2>
                             </Link>
                          </div>
@@ -72,7 +72,7 @@ export default async function GuideSinglePage({ params }: { params: Promise<{ sl
                       
                       <div className="flex flex-col md:flex-row gap-8 w-full">
                          <div className="w-full md:w-[35%] aspect-[4/3] bg-gray-50 rounded-xl flex items-center justify-center border border-gray-100 relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 shrink-0">
-                            {laptop.image ? <img src={formatImageUrl(laptop.image)} alt={laptop.title} className="max-h-full object-contain p-4 group-hover:scale-105 transition-transform" /> : <Laptop className="w-20 h-20 text-gray-200" />}
+                            {laptop.image ? <img src={formatImageUrl(laptop.image)} alt={laptop.title} className="max-h-full object-contain p-4 group-hover:scale-105 transition-transform" /> : <Smartphone className="w-20 h-20 text-gray-200" />}
                             <span className="absolute top-2 right-2 p-1.5 bg-white rounded-lg border border-gray-100 text-[#10B981] shadow-sm"><TicketPercent size={18} /></span>
                          </div>
                          <div className="flex-1 flex flex-col">
@@ -80,20 +80,20 @@ export default async function GuideSinglePage({ params }: { params: Promise<{ sl
                             {/* Specs Grid */}
                             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 w-full">
                                <div className="bg-[#fcfdfd] p-4 rounded-xl border border-gray-100 flex flex-col group-hover:border-[#10B981] transition-colors">
-                                  <span className="text-[10px] font-black text-gray-400 tracking-widest uppercase mb-1">Processor</span>
+                                  <span className="text-[10px] font-black text-gray-400 tracking-widest uppercase mb-1">Chipset</span>
                                   <span className="text-[11px] font-black text-gray-900 leading-tight">{laptop.processor_type || '--'}</span>
                                </div>
                                <div className="bg-[#fcfdfd] p-4 rounded-xl border border-gray-100 flex flex-col group-hover:border-[#10B981] transition-colors">
-                                  <span className="text-[10px] font-black text-gray-400 tracking-widest uppercase mb-1">Memory</span>
-                                  <span className="text-[11px] font-black text-gray-900 leading-tight">{laptop.ram_gb ? `${laptop.ram_gb}GB Base` : '--'}</span>
+                                  <span className="text-[10px] font-black text-gray-400 tracking-widest uppercase mb-1">RAM</span>
+                                  <span className="text-[11px] font-black text-gray-900 leading-tight">{laptop.ram_gb ? `${laptop.ram_gb}GB` : '--'}</span>
                                </div>
                                <div className="bg-[#fcfdfd] p-4 rounded-xl border border-gray-100 flex flex-col group-hover:border-[#10B981] transition-colors">
-                                  <span className="text-[10px] font-black text-gray-400 tracking-widest uppercase mb-1">Graphics</span>
+                                  <span className="text-[10px] font-black text-gray-400 tracking-widest uppercase mb-1">Camera</span>
                                   <span className="text-[11px] font-black text-gray-900 leading-tight">{laptop.gpu_type || '--'}</span>
                                </div>
                                <div className="bg-[#fcfdfd] p-4 rounded-xl border border-gray-100 flex flex-col group-hover:border-[#10B981] transition-colors">
-                                  <span className="text-[10px] font-black text-gray-400 tracking-widest uppercase mb-1">Display</span>
-                                  <span className="text-[11px] font-black text-gray-900 leading-tight">{laptop.display_size ? `${laptop.display_size}" Panel` : '--'}</span>
+                                  <span className="text-[10px] font-black text-gray-400 tracking-widest uppercase mb-1">Screen</span>
+                                  <span className="text-[11px] font-black text-gray-900 leading-tight">{laptop.display_size ? `${laptop.display_size}" Display` : '--'}</span>
                                </div>
                             </div>
                             {item.custom_note && (
@@ -104,7 +104,7 @@ export default async function GuideSinglePage({ params }: { params: Promise<{ sl
                                   <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">Deal Price</span>
                                   <p className="text-3xl font-extrabold text-gray-900">₹{laptop.base_price || 'N/A'}</p>
                                </div>
-                               <Link href={`/laptops/${laptop.slug}`} className="bg-[#10B981] hover:bg-[#059669] text-white font-black py-4 px-10 rounded-xl transition-all shadow-lg uppercase tracking-widest text-xs flex items-center justify-center gap-2">
+                               <Link href={`/mobiles/${laptop.slug}`} className="bg-[#10B981] hover:bg-[#059669] text-white font-black py-4 px-10 rounded-xl transition-all shadow-lg uppercase tracking-widest text-xs flex items-center justify-center gap-2">
                                   Check Current Price
                                </Link>
                             </div>
@@ -127,7 +127,7 @@ export default async function GuideSinglePage({ params }: { params: Promise<{ sl
            <div className="bg-gray-900 text-white rounded-2xl p-6 shadow-xl">
               <h3 className="text-xs font-black uppercase tracking-widest mb-6 border-b border-gray-800 pb-4 flex items-center gap-2"><ShieldCheck className="text-[#10B981]" /> How we pick</h3>
               <p className="text-[11px] font-bold text-gray-400 leading-relaxed italic">
-                 "Our buying guides are generated through hands-on benchmark data, analyzing every hardware iteration to find genuine value overlaps for our users."
+                 "Our buying guides are built from hands-on testing, launch tracking, and price analysis to surface the phones that deliver the strongest real-world value."
               </p>
            </div>
 

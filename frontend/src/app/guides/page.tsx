@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Laptop, ChevronRight, Bookmark, ArrowRight, ShieldCheck } from "lucide-react";
+import { ChevronRight, Bookmark, ArrowRight, ShieldCheck } from "lucide-react";
 import { fetchApiList } from "@/lib/api";
 
 async function getGuides() {
@@ -7,8 +7,8 @@ async function getGuides() {
 }
 
 export const metadata = {
-  title: "Laptop Buying Guides & Best Picks - Laptop Duniya",
-  description: "Find the best laptop for your needs with our curated buying guides.",
+  title: "Mobile Buying Guides & Best Picks - PhoneRadar",
+  description: "Find the best smartphone for your needs with our curated buying guides.",
 };
 
 export default async function GuidesPage() {
@@ -26,7 +26,7 @@ export default async function GuidesPage() {
               <span className="text-[#10B981]">Buying Guides Hub</span>
            </div>
            <h1 className="text-[22px] font-black text-gray-900 tracking-tight mb-2">Master Your Purchase</h1>
-           <p className="text-gray-500 font-bold text-lg max-w-2xl leading-relaxed">Don't guess. Our curated collections rank the best laptops based on rigorous real-world performance tests for every budget.</p>
+           <p className="text-gray-500 font-bold text-lg max-w-2xl leading-relaxed">Skip the guesswork. Our curated collections rank the best phones for camera, gaming, battery, and value across every budget.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">

@@ -10,21 +10,21 @@ services:
       - ./backend:/app # Mount local backend for sqlite persistence if used, or use volume
     environment:
       - DEBUG=False
-      - ALLOWED_HOSTS=194.163.162.240,localhost,laptopduniya.in,www.laptopduniya.in,backend
-      - PUBLIC_SITE_URL=https://laptopduniya.in
+      - ALLOWED_HOSTS=194.163.162.240,localhost,phoneradar.in,www.phoneradar.in,backend
+      - PUBLIC_SITE_URL=https://phoneradar.in
       - SHORTENER_API_TOKEN=${SHORTENER_API_TOKEN:-}
       - JWT_SECRET_KEY=${JWT_SECRET_KEY:-change-me-in-production}
-      - NEXT_PUBLIC_API_URL=https://laptopduniya.in/api/v1
+      - NEXT_PUBLIC_API_URL=https://phoneradar.in/api/v1
     restart: always
 
   frontend:
     build: 
       context: ./frontend
       args:
-        - NEXT_PUBLIC_API_URL=https://laptopduniya.in/api/v1
+        - NEXT_PUBLIC_API_URL=https://phoneradar.in/api/v1
     environment:
-      - NEXT_PUBLIC_API_URL=https://laptopduniya.in/api/v1
-      - INTERNAL_API_URL=http://laptopduniya.in/api/v1
+      - NEXT_PUBLIC_API_URL=https://phoneradar.in/api/v1
+      - INTERNAL_API_URL=http://phoneradar.in/api/v1
     ports:
       - "3000:3000"
     restart: always
@@ -36,8 +36,8 @@ services:
     networks:
       default:
         aliases:
-          - laptopduniya.in
-          - www.laptopduniya.in
+          - phoneradar.in
+          - www.phoneradar.in
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - static_volume:/app/static

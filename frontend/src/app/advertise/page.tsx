@@ -10,7 +10,7 @@ export default function AdvertisePage() {
         <div className="site-shell relative z-10 text-center">
           <h1 className="text-6xl font-black mb-6 tracking-tight uppercase italic decoration-[#10B981] underline underline-offset-[12px] decoration-8">Advertise with Us</h1>
           <p className="text-xl font-bold text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Reach a targeted audience of high-intent laptop buyers and tech enthusiasts.
+            Reach a targeted audience of high-intent smartphone buyers, deal hunters, and mobile tech enthusiasts.
           </p>
         </div>
       </section>
@@ -36,12 +36,12 @@ export default function AdvertisePage() {
       {/* Why Us */}
       <section className="py-24 bg-gray-50 rounded-[4rem]">
         <div className="site-shell">
-          <h2 className="text-4xl font-black text-gray-900 mb-16 text-center italic uppercase tracking-tight">Why Partner with Laptop Duniya?</h2>
+          <h2 className="text-4xl font-black text-gray-900 mb-16 text-center italic uppercase tracking-tight">Why Partner with PhoneRadar?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {[
               { icon: <TrendingUp />, title: 'High Intent Traffic', desc: 'Our users are at the final stage of the buying funnel—researching specific models and comparing prices.' },
-              { icon: <Target />, title: 'Niche Focus', desc: '100% of our content is dedicated to Laptops and PC peripherals. Zero wasted impressions.' },
-              { icon: <Users />, title: 'Established Trust', desc: 'Our "Expert Ratings" and software compatibility tools have built a loyal, returning audience.' },
+              { icon: <Target />, title: 'Niche Focus', desc: '100% of our content is dedicated to smartphones, accessories, deals, and mobile buying advice. Zero wasted impressions.' },
+              { icon: <Users />, title: 'Established Trust', desc: 'Our expert ratings, comparison tools, and deal coverage have built a loyal, returning audience.' },
               { icon: <Zap />, title: 'Native Integration', desc: 'We offer sponsored reviews, deal highlighting, and direct placement in our "Buying Guides".' },
             ].map((item, i) => (
               <div key={i} className="flex gap-8 items-start bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
@@ -66,7 +66,7 @@ export default function AdvertisePage() {
             <p className="text-gray-400 font-bold mb-10 max-w-xl mx-auto">Contact our partnership team for our full media kit and pricing options.</p>
             <div className="flex items-center justify-center gap-4 bg-white/10 w-fit mx-auto px-10 py-5 rounded-2xl border border-white/10 hover:border-[#10B981] transition-all group">
                <Mail className="text-[#10B981]" />
-               <span className="text-xl font-black text-white group-hover:text-[#10B981] transition-colors tracking-tight">laptopduniya77@gmail.com</span>
+               <span className="text-xl font-black text-white group-hover:text-[#10B981] transition-colors tracking-tight">hello@phoneradar.in</span>
             </div>
          </div>
       </section>

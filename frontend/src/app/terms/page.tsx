@@ -9,17 +9,17 @@ export default function TermsPage() {
         <div className="space-y-12 text-gray-600 font-bold leading-relaxed">
           <section>
             <h2 className="text-xl font-black text-gray-900 mb-4 uppercase tracking-widest">1. Acceptance of Terms</h2>
-            <p>By accessing and using Laptop Duniya, you accept and agree to be bound by the terms and provision of this agreement.</p>
+            <p>By accessing and using PhoneRadar, you accept and agree to be bound by the terms and provision of this agreement.</p>
           </section>
 
           <section>
             <h2 className="text-xl font-black text-gray-900 mb-4 uppercase tracking-widest">2. Accuracy of Information</h2>
-            <p>While we strive for 100% accuracy, laptop specifications, prices, and availability are subject to change. We are not responsible for errors in retailer listings or outdated prices.</p>
+            <p>While we strive for 100% accuracy, mobile specifications, prices, and availability are subject to change. We are not responsible for errors in retailer listings or outdated prices.</p>
           </section>
 
           <section>
             <h2 className="text-xl font-black text-gray-900 mb-4 uppercase tracking-widest">3. Content Ownership</h2>
-            <p>All content including reviews, comparison logic, and layout are the intellectual property of Laptop Duniya. Unauthorized reproduction is strictly prohibited.</p>
+            <p>All content including reviews, comparison logic, and layout are the intellectual property of PhoneRadar. Unauthorized reproduction is strictly prohibited.</p>
           </section>
 
           <section>
@@ -29,12 +29,12 @@ export default function TermsPage() {
 
           <section>
             <h2 className="text-xl font-black text-gray-900 mb-4 uppercase tracking-widest">5. Monetization & Advertising</h2>
-            <p>Laptop Duniya is a commercially supported platform. We utilize affiliate marketing and third-party advertising (including Google AdSense) to generate revenue. By using this site, you acknowledge that certain links and content may be sponsored or commission-based.</p>
+            <p>PhoneRadar is a commercially supported platform. We utilize affiliate marketing and third-party advertising (including Google AdSense) to generate revenue. By using this site, you acknowledge that certain links and content may be sponsored or commission-based.</p>
           </section>
 
           <section className="bg-gray-50 p-8 rounded-3xl border border-gray-100">
             <h2 className="text-xl font-black text-gray-900 mb-4 uppercase tracking-widest text-[#10B981]">5. Contact</h2>
-            <p>For any legal inquiries regarding these terms, please contact: <strong>laptopduniya77@gmail.com</strong></p>
+            <p>For any legal inquiries regarding these terms, please contact: <strong>hello@phoneradar.in</strong></p>
           </section>
         </div>
       </div>

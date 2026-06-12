@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Star, Laptop, ChevronRight, ArrowRight, ShieldCheck } from "lucide-react";
+import { Star, Smartphone, ChevronRight, ArrowRight, ShieldCheck } from "lucide-react";
 import { fetchApiList } from "@/lib/api";
 
 async function getReviews() {
@@ -7,8 +7,8 @@ async function getReviews() {
 }
 
 export const metadata = {
-  title: "Expert Laptop Reviews - Laptop Duniya",
-  description: "Read in-depth technical analysis and hands-on reviews of the latest laptops.",
+  title: "Expert Mobile Reviews - PhoneRadar",
+  description: "Read in-depth technical analysis and hands-on reviews of the latest smartphones.",
 };
 
 export default async function ReviewsPage() {
@@ -29,7 +29,7 @@ export default async function ReviewsPage() {
               <h1 className="text-[22px] font-black text-gray-900 tracking-tight leading-none">Expert Tech Reviews</h1>
               <div className="bg-[#10B981] bg-opacity-10 text-[#10B981] text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest flex items-center gap-1 shadow-sm"><ShieldCheck size={14} /> Laboratory Tested</div>
            </div>
-           <p className="text-gray-500 font-bold text-lg max-w-2xl leading-relaxed">Our experts benchmark performance, battery, and display quality to give you the most accurate verdict on every machine.</p>
+           <p className="text-gray-500 font-bold text-lg max-w-2xl leading-relaxed">Our experts test performance, battery, camera quality, and display behavior to give you the most accurate verdict on every phone.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -43,7 +43,7 @@ export default async function ReviewsPage() {
 
                <div className="flex items-center gap-4 mb-10">
                   <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center border border-gray-100 group-hover:border-[#10B981] transition-colors">
-                    <Laptop size={24} className="text-gray-400 group-hover:text-[#10B981] transition-colors" />
+                    <Smartphone size={24} className="text-gray-400 group-hover:text-[#10B981] transition-colors" />
                   </div>
                   <div className="flex flex-col">
                      <span className="text-[10px] font-black uppercase tracking-widest text-[#10B981]">Hardware Analysis</span>
@@ -74,7 +74,7 @@ export default async function ReviewsPage() {
             </Link>
           )) : (
             <div className="col-span-full py-20 text-center flex flex-col items-center">
-               <Laptop className="w-16 h-16 text-gray-100 animate-pulse mb-4" />
+               <Smartphone className="w-16 h-16 text-gray-100 animate-pulse mb-4" />
                <p className="text-gray-300 font-black uppercase tracking-widest">More laboratory tests in progress...</p>
             </div>
           )}

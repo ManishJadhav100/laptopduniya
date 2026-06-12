@@ -7,8 +7,8 @@ async function getCoupons() {
 }
 
 export const metadata = {
-  title: "Latest Laptop Coupons & Promo Codes 2026 - Laptop Duniya",
-  description: "Highest savings on HP, Dell, Apple, and Lenovo laptops. Verified promo codes and direct discount deals.",
+  title: "Latest Mobile Coupons & Promo Codes 2026 - PhoneRadar",
+  description: "Save on iPhones, Samsung Galaxy phones, Pixels, OnePlus devices, and more with verified promo codes and direct discount deals.",
 };
 
 export default async function CouponsPage() {
@@ -21,10 +21,10 @@ export default async function CouponsPage() {
         {/* Page Header */}
         <div className="flex flex-col mb-12 border-b border-gray-100 pb-12">
            <h1 className="text-5xl font-black text-gray-900 tracking-tight mb-4 flex items-center gap-4">
-              <TicketPercent className="w-12 h-12 text-[#10B981]" /> Laptop Coupons & Deals
+              <TicketPercent className="w-12 h-12 text-[#10B981]" /> Mobile Coupons & Deals
            </h1>
            <p className="text-gray-500 font-bold text-lg max-w-2xl leading-relaxed">
-              Save up to $500 on your next machine. We manually verify every promo code and direct discount deal daily.
+              Save more on your next smartphone. We manually verify every promo code and direct discount deal daily.
            </p>
         </div>
 

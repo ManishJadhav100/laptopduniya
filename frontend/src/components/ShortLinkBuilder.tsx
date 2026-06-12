@@ -48,7 +48,7 @@ export default function ShortLinkBuilder() {
 
     const baseUrl =
       typeof window === "undefined"
-        ? "https://laptopduniya.in"
+        ? "https://phoneradar.in"
         : window.location.origin;
 
     return `${baseUrl}/api?api=${apiKey}&url=example.com&alias=my-custom-link`;
@@ -200,7 +200,7 @@ export default function ShortLinkBuilder() {
               </label>
               <input
                 type="text"
-                placeholder="macbook-deal"
+                placeholder="iphone-16-deal"
                 value={formData.alias}
                 onChange={(event) =>
                   setFormData({ ...formData, alias: event.target.value })
@@ -215,7 +215,7 @@ export default function ShortLinkBuilder() {
               </label>
               <input
                 type="text"
-                placeholder="MacBook Air M3 Offer"
+                placeholder="iPhone 16 Offer"
                 value={formData.title}
                 onChange={(event) =>
                   setFormData({ ...formData, title: event.target.value })
@@ -326,7 +326,7 @@ export default function ShortLinkBuilder() {
           <div className="mt-8 grid gap-4">
             {[
               "Short URL opens the gateway entry route.",
-              "Step 1 picks a random laptop page and shows a 10-second timer.",
+              "Step 1 picks a random mobile page and shows a 10-second timer.",
               "Step 2 shows a 5-second timer before the destination URL opens.",
               "Every hit on /s/your-code increments the backend visit counter.",
             ].map((item) => (

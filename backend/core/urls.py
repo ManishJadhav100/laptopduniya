@@ -11,6 +11,7 @@ from .views import (
 
 router = DefaultRouter()
 router.register(r'laptops', LaptopViewSet, basename='laptop')
+router.register(r'mobiles', LaptopViewSet, basename='mobile')
 router.register(r'news', NewsViewSet, basename='news')
 router.register(r'reviews', ReviewViewSet, basename='review')
 router.register(r'solutions', SolutionViewSet, basename='solution')

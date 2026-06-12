@@ -59,7 +59,7 @@ export default function Navbar() {
   const isActive = (path: string) => pathname === path;
   const showShortenerNav = isReady && isAuthenticated;
   const desktopLinks: DesktopNavItem[] = [
-    { href: "/laptops", label: "All Laptops" },
+    { href: "/mobiles", label: "All Mobiles" },
     {
       href: "/coupons",
       label: "Coupons",
@@ -77,7 +77,7 @@ export default function Navbar() {
     { href: "/solutions", label: "Solutions" },
   ];
   const mobileLinks: MobileNavItem[] = [
-    { name: "All Laptops", path: "/laptops", icon: <ArrowRight size={14} /> },
+    { name: "All Mobiles", path: "/mobiles", icon: <ArrowRight size={14} /> },
     {
       name: "Coupons",
       path: "/coupons",
@@ -110,10 +110,10 @@ export default function Navbar() {
       <div className="site-shell flex items-center justify-between py-3 lg:py-4 border-b border-gray-100 gap-4 lg:gap-8">
         <Link href="/" className="flex items-center gap-1.5 shrink-0 group">
           <div className="text-[#10B981] text-xl lg:text-3xl font-black tracking-tight uppercase group-hover:scale-105 transition-transform">
-            LAPTOP
+            PHONE
           </div>
           <div className="bg-[#10B981] text-white px-2 py-0.5 rounded text-base lg:text-xl font-bold uppercase tracking-widest leading-none group-hover:bg-[#059669] transition-colors">
-            DUNIYA
+            RADAR
           </div>
         </Link>
 

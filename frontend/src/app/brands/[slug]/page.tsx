@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Laptop, TicketPercent, ShieldCheck, Clock, ExternalLink, ArrowRight, Star, HelpCircle, FileText, ChevronRight } from 'lucide-react';
+import { Smartphone, TicketPercent, ShieldCheck, Clock, ExternalLink, ArrowRight, Star, HelpCircle, FileText, ChevronRight } from 'lucide-react';
 import { formatImageUrl } from '@/lib/url-utils';
 import { fetchApiJson } from '@/lib/api';
 import { buildOutboundGatewayUrl } from '@/lib/outbound-gateway';
@@ -15,12 +15,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   
   if (!data?.brand) {
     const brandName = resolvedParams.slug.charAt(0).toUpperCase() + resolvedParams.slug.slice(1);
-    return { title: `${brandName} Laptops - Laptop Duniya` };
+    return { title: `${brandName} Mobiles - PhoneRadar` };
   }
 
   return {
-    title: data.brand.meta_title || `${data.brand.name} Laptops Price, Deals, News and Reviews 2026 - Laptop Duniya`,
-    description: data.brand.meta_description || `Complete guide to ${data.brand.name} laptops. Get latest prices, verified coupons, expert reviews, and tech support.`,
+    title: data.brand.meta_title || `${data.brand.name} Mobiles Price, Deals, News and Reviews 2026 - PhoneRadar`,
+    description: data.brand.meta_description || `Complete guide to ${data.brand.name} phones. Get latest prices, verified coupons, expert reviews, and tech support.`,
   };
 }
 
@@ -33,7 +33,7 @@ export default async function BrandHubPage({ params }: { params: Promise<{ slug:
       <div className="bg-[#fcfdfd] min-h-screen font-sans flex items-center justify-center">
         <div className="text-center py-32">
           <div className="w-20 h-20 bg-gray-50 rounded-3xl flex items-center justify-center mx-auto mb-8 border border-gray-100 shadow-inner">
-            <Laptop className="w-10 h-10 text-gray-200" />
+            <Smartphone className="w-10 h-10 text-gray-200" />
           </div>
           <h1 className="text-2xl font-black text-gray-900 uppercase tracking-tight mb-4">Brand hub currently being populated...</h1>
           <p className="text-gray-500 font-bold mb-8">We are syncing the latest manufacturer data for this hub.</p>
@@ -57,7 +57,7 @@ export default async function BrandHubPage({ params }: { params: Promise<{ slug:
                {brand.logo ? <img src={formatImageUrl(brand.logo)} alt={brand.name} className="max-h-16 object-contain" /> : <div className="text-2xl font-black text-gray-300">{brand.name[0]}</div>}
             </div>
             <h1 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tight leading-tight mb-6 uppercase italic decoration-[#10B981] underline decoration-4 underline-offset-8">
-               {brand.name} Laptops Price, Deals, News & Reviews
+               {brand.name} Mobiles Price, Deals, News & Reviews
             </h1>
             {brand.description ? (
                <div className="prose prose-lg font-bold text-gray-500 max-w-3xl leading-relaxed brand-desc" dangerouslySetInnerHTML={{ __html: brand.description }} />
@@ -106,14 +106,14 @@ export default async function BrandHubPage({ params }: { params: Promise<{ slug:
          {/* LATEST LAPTOP PRICE LIST */}
          <section>
             <div className="flex items-center justify-between mb-8 border-b border-gray-100 pb-4">
-               <h2 className="text-lg font-black text-gray-900 flex items-center gap-3"><Laptop className="text-[#10B981]" /> Trending {brand.name} Laptops Pricing</h2>
-               <Link href="/laptops" className="text-xs font-black text-[#10B981] uppercase tracking-widest hover:underline">Full Catalog</Link>
+               <h2 className="text-lg font-black text-gray-900 flex items-center gap-3"><Smartphone className="text-[#10B981]" /> Trending {brand.name} Phones Pricing</h2>
+               <Link href="/mobiles" className="text-xs font-black text-[#10B981] uppercase tracking-widest hover:underline">Full Catalog</Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
                {laptops.length > 0 ? laptops.map((l: any, i: number) => (
-                  <Link href={`/laptops/${l.slug}`} key={i} className="bg-white border border-gray-200 rounded-2xl p-5 hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col">
+                  <Link href={`/mobiles/${l.slug}`} key={i} className="bg-white border border-gray-200 rounded-2xl p-5 hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col">
                      <div className="aspect-[4/3] flex items-center justify-center mb-6 bg-[#fafafa] rounded-xl relative overflow-hidden mix-blend-multiply border border-gray-50">
-                        {l.image ? <img src={formatImageUrl(l.image)} className="max-h-24 object-contain group-hover:scale-110 transition-transform duration-500" /> : <Laptop size={32} className="text-gray-200" />}
+                        {l.image ? <img src={formatImageUrl(l.image)} className="max-h-24 object-contain group-hover:scale-110 transition-transform duration-500" /> : <Smartphone size={32} className="text-gray-200" />}
                      </div>
                      <h3 className="text-sm font-black text-gray-900 group-hover:text-[#10B981] leading-tight mb-4 flex-1">{l.title}</h3>
                      <div className="flex items-center justify-between mt-auto">
@@ -123,7 +123,7 @@ export default async function BrandHubPage({ params }: { params: Promise<{ slug:
                   </Link>
                )) : (
                  <div className="col-span-full py-12 text-center text-gray-400 font-black uppercase tracking-widest border border-dashed border-gray-100 rounded-2xl">
-                    No active laptop listings for {brand.name} at the moment.
+                    No active phone listings for {brand.name} at the moment.
                  </div>
                )}
             </div>

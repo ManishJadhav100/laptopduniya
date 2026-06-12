@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
         <div className="prose prose-emerald lg:prose-xl max-w-none text-gray-600 font-bold leading-relaxed">
           <section className="mb-16">
             <h2 className="text-3xl font-black text-gray-900 mb-6 italic border-l-4 border-[#10B981] pl-6 uppercase tracking-tight">Introduction</h2>
-            <p>Welcome to Laptop Duniya. We value your privacy and are committed to protecting your personal data. This privacy policy informs you how we look after your data when you visit our website and tells you about your privacy rights.</p>
+            <p>Welcome to PhoneRadar. We value your privacy and are committed to protecting your personal data. This privacy policy informs you how we look after your data when you visit our website and tells you about your privacy rights.</p>
           </section>
 
           <section className="mb-16">
@@ -38,7 +38,7 @@ export default function PrivacyPolicyPage() {
 
           <section className="mb-16 bg-emerald-50/50 p-10 rounded-[3rem] border border-emerald-100/50">
             <h2 className="text-3xl font-black text-gray-900 mb-6 italic border-l-4 border-[#10B981] pl-6 uppercase tracking-tight text-[#115e59]">Cookies & Third-Party Advertising</h2>
-            <p className="mb-6">Laptop Duniya uses cookies to store information about visitors' preferences and to record user-specific information on which pages the user accesses or visits.</p>
+            <p className="mb-6">PhoneRadar uses cookies to store information about visitors' preferences and to record user-specific information on which pages the user accesses or visits.</p>
             <div className="space-y-4">
                <div className="flex gap-4">
                   <div className="w-1.5 h-1.5 bg-[#10B981] rounded-full mt-2.5 shrink-0"></div>
@@ -55,7 +55,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-3xl font-black text-gray-900 mb-6 italic border-l-4 border-[#10B981] pl-6 uppercase tracking-tight">Contact Us</h2>
             <p>For any privacy-related questions, please contact us at:</p>
             <div className="bg-gray-50 p-8 rounded-3xl border-2 border-dashed border-gray-200 mt-6 font-black text-[#10B981] text-xl">
-               laptopduniya77@gmail.com
+               hello@phoneradar.in
             </div>
           </section>
         </div>

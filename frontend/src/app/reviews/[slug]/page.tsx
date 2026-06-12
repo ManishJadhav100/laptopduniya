@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Clock, ArrowLeft, Star, Laptop, ShieldCheck, TicketPercent, Zap, Cpu, Battery, MonitorPlay } from 'lucide-react';
+import { Clock, ArrowLeft, Star, Smartphone, ShieldCheck, TicketPercent, Zap, Cpu, Battery, MonitorPlay } from 'lucide-react';
 import AuthorBox from '@/components/AuthorBox';
 import { CommentSystem } from '@/components/ReviewSystem';
 import { formatImageUrl } from '@/lib/url-utils';
@@ -89,17 +89,17 @@ export default async function ReviewSinglePage({ params }: { params: Promise<{ s
         {/* Technical Sidebar */}
         <div className="w-full lg:w-[350px] flex flex-col gap-10">
            
-           {/* Current Tested Laptop Card */}
+           {/* Current Tested Phone Card */}
            {laptop && (
             <div className="bg-white border-2 border-[#10B981] rounded-2xl overflow-hidden shadow-lg p-6">
                <span className="text-[10px] font-black text-[#10B981] uppercase tracking-[0.2em] mb-4 block">Currently Testing</span>
                <div className="h-40 bg-white flex items-center justify-center mb-6 mix-blend-multiply">
-                  {laptop.image ? <img src={formatImageUrl(laptop.image)} alt={laptop.title} className="max-h-full object-contain" /> : <Laptop size={40} className="text-gray-200" />}
+                  {laptop.image ? <img src={formatImageUrl(laptop.image)} alt={laptop.title} className="max-h-full object-contain" /> : <Smartphone size={40} className="text-gray-200" />}
                </div>
                <h3 className="text-xl font-black text-gray-900 tracking-tight leading-none mb-4">{laptop.title}</h3>
                <p className="text-2xl font-black text-[#10B981] mb-6">₹{laptop.base_price}</p>
                
-               <Link href={`/laptops/${laptop.slug}`} className="w-full bg-[#10B981] text-white font-black py-4 rounded-xl text-center flex items-center justify-center gap-2 hover:bg-[#059669] transition-all uppercase tracking-widest text-xs shadow-md shadow-emerald-500/10">
+               <Link href={`/mobiles/${laptop.slug}`} className="w-full bg-[#10B981] text-white font-black py-4 rounded-xl text-center flex items-center justify-center gap-2 hover:bg-[#059669] transition-all uppercase tracking-widest text-xs shadow-md shadow-emerald-500/10">
                   <TicketPercent size={18} /> Get This Deal
                </Link>
             </div>
@@ -107,12 +107,12 @@ export default async function ReviewSinglePage({ params }: { params: Promise<{ s
 
            {/* Top Features Sidebar List */}
            <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
-               <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-6 border-b border-gray-100 pb-2">Hardware Highlights</h3>
+               <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-6 border-b border-gray-100 pb-2">Phone Highlights</h3>
                <div className="flex flex-col gap-6">
-                  <div className="flex items-center gap-4"><div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center border border-gray-100"><Cpu className="w-5 h-5 text-[#10B981]" /></div><div><p className="text-[9px] font-black text-gray-400 uppercase">Power</p><p className="text-xs font-black text-gray-800">Ultra Fast CPU</p></div></div>
-                  <div className="flex items-center gap-4"><div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center border border-gray-100"><Zap className="w-5 h-5 text-[#10B981]" /></div><div><p className="text-[9px] font-black text-gray-400 uppercase">Memory</p><p className="text-xs font-black text-gray-800">32GB LPDDR5x</p></div></div>
-                  <div className="flex items-center gap-4"><div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center border border-gray-100"><MonitorPlay className="w-5 h-5 text-[#10B981]" /></div><div><p className="text-[9px] font-black text-gray-400 uppercase">Screen</p><p className="text-xs font-black text-gray-800">120Hz OLED</p></div></div>
-                  <div className="flex items-center gap-4"><div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center border border-gray-100"><Battery className="w-5 h-5 text-[#10B981]" /></div><div><p className="text-[9px] font-black text-gray-400 uppercase">Endurance</p><p className="text-xs font-black text-gray-800">15+ Hour Life</p></div></div>
+                  <div className="flex items-center gap-4"><div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center border border-gray-100"><Cpu className="w-5 h-5 text-[#10B981]" /></div><div><p className="text-[9px] font-black text-gray-400 uppercase">Power</p><p className="text-xs font-black text-gray-800">Flagship Chipset</p></div></div>
+                  <div className="flex items-center gap-4"><div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center border border-gray-100"><Zap className="w-5 h-5 text-[#10B981]" /></div><div><p className="text-[9px] font-black text-gray-400 uppercase">Memory</p><p className="text-xs font-black text-gray-800">12GB Fast RAM</p></div></div>
+                  <div className="flex items-center gap-4"><div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center border border-gray-100"><MonitorPlay className="w-5 h-5 text-[#10B981]" /></div><div><p className="text-[9px] font-black text-gray-400 uppercase">Display</p><p className="text-xs font-black text-gray-800">Bright High-Refresh Panel</p></div></div>
+                  <div className="flex items-center gap-4"><div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center border border-gray-100"><Battery className="w-5 h-5 text-[#10B981]" /></div><div><p className="text-[9px] font-black text-gray-400 uppercase">Battery</p><p className="text-xs font-black text-gray-800">All-Day Endurance</p></div></div>
                </div>
            </div>
 

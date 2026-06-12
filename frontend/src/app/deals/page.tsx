@@ -7,8 +7,8 @@ async function getDeals() {
 }
 
 export const metadata = {
-  title: "Hot Laptop Deals & Direct Discounts 2026 - Laptop Duniya",
-  description: "Biggest price drops on premium laptops. Verified direct deals from official stores.",
+  title: "Hot Mobile Deals & Direct Discounts 2026 - PhoneRadar",
+  description: "Biggest price drops on premium smartphones. Verified direct deals from official stores.",
 };
 
 export default async function DealsPage() {
@@ -21,10 +21,10 @@ export default async function DealsPage() {
         {/* Page Header */}
         <div className="flex flex-col mb-12 border-b border-gray-100 pb-12">
            <h1 className="text-5xl font-black text-gray-900 tracking-tight mb-4 flex items-center gap-4">
-              <Zap className="w-12 h-12 text-yellow-500 fill-yellow-500" /> Hot Laptop Deals
+              <Zap className="w-12 h-12 text-yellow-500 fill-yellow-500" /> Hot Mobile Deals
            </h1>
            <p className="text-gray-500 font-bold text-lg max-w-2xl leading-relaxed">
-              Skip the promo codes. These are direct price drops and official hardware deals verified for the best value today.
+              Skip the promo codes. These are direct price drops and official phone deals verified for the best value today.
            </p>
         </div>
 

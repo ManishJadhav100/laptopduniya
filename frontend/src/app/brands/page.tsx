@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Laptop, ChevronRight, ShieldCheck, Zap, Star } from 'lucide-react';
+import { Smartphone, ChevronRight, ShieldCheck, Zap, Star } from 'lucide-react';
 import { formatImageUrl } from '@/lib/url-utils';
 import { fetchApiList } from '@/lib/api';
 
@@ -9,8 +9,8 @@ async function getBrands() {
 }
 
 export const metadata: Metadata = {
-  title: 'Shop by Brand - Latest Laptops & Best Deals 2026',
-  description: 'Explore the best laptop brands including Apple, Dell, HP, Lenovo, and ASUS. Compare models, read expert reviews, and find verified coupons for every manufacturer.',
+  title: 'Shop by Brand - Latest Mobiles & Best Deals 2026',
+  description: 'Explore the best smartphone brands including Apple, Samsung, Google, OnePlus, Xiaomi, Nothing, and more. Compare models, read expert reviews, and find verified coupons.',
 };
 
 export default async function BrandsPage() {
@@ -29,7 +29,7 @@ export default async function BrandsPage() {
                   Shop by <span className="text-[#10B981]">Brand</span>
                </h1>
                <p className="text-gray-500 font-bold text-lg max-w-2xl leading-relaxed">
-                  Every major laptop manufacturer in one place. Access dedicated hubs for pricing, verified coupons, and expert technical support for your favorite brand.
+                  Every major smartphone brand in one place. Access dedicated hubs for pricing, verified coupons, launch coverage, and expert technical support for your favorite brand.
                </p>
             </div>
          </div>
@@ -57,7 +57,7 @@ export default async function BrandsPage() {
                   <h2 className="text-2xl font-black text-gray-900 mb-2 group-hover:text-[#10B981] transition-colors">{brand.name}</h2>
                   
                   <div className="flex items-center gap-3 text-[10px] font-black text-gray-400 uppercase tracking-widest mb-6">
-                     <span className="flex items-center gap-1"><Laptop size={12} className="text-[#10B981]"/> Full Catalog</span>
+                     <span className="flex items-center gap-1"><Smartphone size={12} className="text-[#10B981]"/> Full Catalog</span>
                      <span className="w-1 h-1 bg-gray-200 rounded-full" />
                      <span className="flex items-center gap-1"><Zap size={12} className="text-orange-500"/> Verified Deals</span>
                   </div>

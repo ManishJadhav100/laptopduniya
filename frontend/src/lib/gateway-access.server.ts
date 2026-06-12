@@ -15,7 +15,7 @@ function getGatewayAccessSecret() {
   return (
     process.env.GATEWAY_ACCESS_SECRET ||
     process.env.NEXTAUTH_SECRET ||
-    "laptop-duniya-gateway-dev-secret"
+    "phoneradar-gateway-dev-secret"
   );
 }
 

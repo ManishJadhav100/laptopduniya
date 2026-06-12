@@ -131,7 +131,7 @@ export function buildLaptopGatewayPath(
     includeLaptopGatewayFlag: true,
   });
 
-  return query ? `/laptops/${slug}?${query}` : `/laptops/${slug}`;
+  return query ? `/mobiles/${slug}?${query}` : `/mobiles/${slug}`;
 }
 
 export function buildLaptopGatewayPathFromCode(slug: string, shortCode: string): string {
@@ -140,7 +140,7 @@ export function buildLaptopGatewayPathFromCode(slug: string, shortCode: string):
     short_code: shortCode,
   });
 
-  return `/laptops/${slug}?${params.toString()}`;
+  return `/mobiles/${slug}?${params.toString()}`;
 }
 
 export function parseOutboundGatewayPayload(

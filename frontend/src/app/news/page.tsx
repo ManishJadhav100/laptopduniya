@@ -9,8 +9,8 @@ async function getNews() {
 }
 
 export const metadata = {
-  title: "Tech News Hub - Laptop Duniya",
-  description: "Stay ahead with the latest laptop launches, leaks, and industry rumors.",
+  title: "Tech News Hub - PhoneRadar",
+  description: "Stay ahead with the latest smartphone launches, leaks, and industry rumors.",
 };
 
 export default async function NewsPage() {
@@ -29,8 +29,8 @@ export default async function NewsPage() {
               <ChevronRight size={10} />
               <span className="text-[#10B981]">News Hub</span>
            </div>
-           <h1 className="text-[22px] font-black text-gray-900 tracking-tight mb-2">Latest Laptop News</h1>
-           <p className="text-gray-500 font-bold text-lg max-w-2xl leading-relaxed">Breaking stories, new launches, and the latest industry rumors verified by our expert tech journalists.</p>
+           <h1 className="text-[22px] font-black text-gray-900 tracking-tight mb-2">Latest Mobile News</h1>
+           <p className="text-gray-500 font-bold text-lg max-w-2xl leading-relaxed">Breaking stories, new launches, carrier updates, and the latest smartphone industry rumors verified by our expert tech journalists.</p>
         </div>
 
         {/* FEATURED STORY */}

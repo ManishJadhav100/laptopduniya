@@ -1,6 +1,6 @@
 "use client"; // [REFRESH_INP_V2]
 import Link from "next/link";
-import { Heart, Trash2, ArrowRight, Laptop, TicketPercent, ArrowLeftRight, Zap } from "lucide-react";
+import { Heart, Trash2, ArrowRight, Smartphone, TicketPercent, ArrowLeftRight } from "lucide-react";
 import { useAppContext } from "@/context/AppContext";
 
 export default function WishlistPage() {
@@ -15,7 +15,7 @@ export default function WishlistPage() {
               <Heart className="w-12 h-12 text-[#10B981] fill-[#10B981]" /> Your Saved List
            </h1>
            <p className="text-gray-500 font-bold text-lg max-w-2xl leading-relaxed">
-              Keep track of your favorite laptops and compare them when you're ready to decide.
+              Keep track of your favorite phones and compare them when you are ready to decide.
            </p>
         </div>
 
@@ -34,14 +34,14 @@ export default function WishlistPage() {
 
                  {/* Image Area */}
                  <div className="aspect-[4/3] bg-[#fafafa] rounded-2xl flex items-center justify-center p-6 mb-6 group-hover:scale-105 transition-transform duration-500 mix-blend-multiply relative overflow-hidden">
-                    {l.image ? <img src={l.image} alt={l.title} className="max-h-full object-contain" /> : <Laptop className="w-20 h-20 text-gray-200" />}
+                    {l.image ? <img src={l.image} alt={l.title} className="max-h-full object-contain" /> : <Smartphone className="w-20 h-20 text-gray-200" />}
                     <span className="absolute top-2 left-2 p-1.5 bg-white rounded-lg border border-gray-100 text-[#10B981] shadow-sm"><TicketPercent size={18} /></span>
                  </div>
 
                  {/* Content */}
                  <div className="flex flex-col flex-1">
                     <span className="text-[10px] font-black text-[#10B981] uppercase tracking-[0.2em] mb-2">{l.brand?.name || 'Top Choice'}</span>
-                    <Link href={`/laptops/${l.slug}`} className="hover:underline">
+                    <Link href={`/mobiles/${l.slug}`} className="hover:underline">
                        <h2 className="text-xl font-black text-gray-900 leading-tight mb-4 line-clamp-2">{l.title}</h2>
                     </Link>
                     
@@ -59,7 +59,7 @@ export default function WishlistPage() {
                           >
                              <ArrowLeftRight size={18} />
                           </button>
-                          <Link href={`/laptops/${l.slug}`} className="bg-[#10B981] hover:bg-[#059669] text-white p-3 rounded-xl transition-all shadow-lg flex items-center justify-center">
+                          <Link href={`/mobiles/${l.slug}`} className="bg-[#10B981] hover:bg-[#059669] text-white p-3 rounded-xl transition-all shadow-lg flex items-center justify-center">
                              <ArrowRight size={18} />
                           </Link>
                        </div>
@@ -74,9 +74,9 @@ export default function WishlistPage() {
                 <Heart className="w-10 h-10 text-gray-200" />
              </div>
              <h2 className="text-2xl font-black text-gray-900 mb-4 uppercase tracking-tight">Your wishlist is empty</h2>
-             <p className="text-gray-500 font-bold mb-10 max-w-sm">Start exploring our laptop collection and save the ones that catch your eye.</p>
-             <Link href="/laptops" className="bg-[#10B981] hover:bg-[#059669] text-white font-black py-4 px-10 rounded-xl transition-all shadow-xl uppercase tracking-widest text-xs flex items-center gap-2">
-                Browse Laptops <ArrowRight size={16} />
+             <p className="text-gray-500 font-bold mb-10 max-w-sm">Start exploring our mobile collection and save the ones that catch your eye.</p>
+             <Link href="/mobiles" className="bg-[#10B981] hover:bg-[#059669] text-white font-black py-4 px-10 rounded-xl transition-all shadow-xl uppercase tracking-widest text-xs flex items-center gap-2">
+                Browse Mobiles <ArrowRight size={16} />
              </Link>
           </div>
         )}

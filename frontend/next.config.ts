@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'laptopduniya.in',
+        hostname: 'phoneradar.in',
         pathname: '/media/**',
       },
       // Add your DO droplet IP or production domain here later

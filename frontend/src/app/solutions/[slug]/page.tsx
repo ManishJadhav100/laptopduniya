@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, Laptop, HelpCircle, ShieldCheck, TicketPercent, Zap, Share2, Mail } from 'lucide-react';
+import { ArrowLeft, Smartphone, HelpCircle, ShieldCheck, TicketPercent, Zap, Share2, Mail } from 'lucide-react';
 import AuthorBox from '@/components/AuthorBox';
 import { formatImageUrl } from '@/lib/url-utils';
 import ShareButtons from '@/components/ShareButtons';
@@ -64,15 +64,15 @@ export default async function SolutionSinglePage({ params }: { params: Promise<{
         {/* Technical Sidebar */}
         <div className="w-full lg:w-[320px] flex flex-col gap-10">
            
-           {/* Related Laptops Box */}
+           {/* Related Phones Box */}
            {solution.related_laptops && solution.related_laptops.length > 0 && (
             <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
                <h3 className="bg-gray-900 text-white text-[10px] font-black uppercase tracking-widest px-6 py-4">Applies to these models</h3>
                <div className="p-6 flex flex-col gap-6">
                  {solution.related_laptops.map((l: any, i: number) => (
-                    <Link href={`/laptops/${l.slug}`} key={i} className="flex gap-4 group">
+                    <Link href={`/mobiles/${l.slug}`} key={i} className="flex gap-4 group">
                        <div className="w-16 h-14 bg-[#fafafa] border border-gray-100 rounded flex items-center justify-center shrink-0 group-hover:border-[#10B981] transition-colors overflow-hidden">
-                          {l.image ? <img src={formatImageUrl(l.image)} className="max-h-full object-contain" /> : <Laptop size={18} className="text-gray-300" />}
+                          {l.image ? <img src={formatImageUrl(l.image)} className="max-h-full object-contain" /> : <Smartphone size={18} className="text-gray-300" />}
                        </div>
                        <div className="flex flex-col gap-1 text-xs">
                           <h4 className="font-black text-gray-800 group-hover:text-[#10B981] leading-tight transition-colors line-clamp-2">{l.title}</h4>
@@ -81,8 +81,8 @@ export default async function SolutionSinglePage({ params }: { params: Promise<{
                     </Link>
                  ))}
                </div>
-               <Link href="/laptops" className="block text-center bg-gray-50 py-4 text-[10px] font-black uppercase text-gray-500 hover:text-[#10B981] border-t border-gray-100 transition-colors">
-                 Check Laptop Pricing
+               <Link href="/mobiles" className="block text-center bg-gray-50 py-4 text-[10px] font-black uppercase text-gray-500 hover:text-[#10B981] border-t border-gray-100 transition-colors">
+                 Check Mobile Pricing
                </Link>
             </div>
            )}
@@ -94,7 +94,7 @@ export default async function SolutionSinglePage({ params }: { params: Promise<{
            <div className="bg-[#10B981] bg-opacity-5 border border-[#10B981] border-opacity-10 rounded-2xl p-8 mt-10 text-center flex flex-col items-center">
               <Mail className="w-10 h-10 text-[#10B981] mb-4" />
               <h4 className="text-sm font-black text-gray-900 uppercase tracking-wide mb-2 text-center">Still need help?</h4>
-              <p className="text-[11px] text-gray-500 font-bold mb-6 text-center">Join our community forum for customized fixing advice from experts.</p>
+              <p className="text-[11px] text-gray-500 font-bold mb-6 text-center">Join our community forum for customized phone troubleshooting advice from experts.</p>
               <button className="w-full bg-[#10B981] text-white font-black py-4 rounded-xl text-xs uppercase tracking-widest shadow-lg shadow-emerald-500/10">Ask a Question</button>
            </div>
 

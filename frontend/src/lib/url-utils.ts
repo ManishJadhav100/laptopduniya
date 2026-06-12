@@ -23,6 +23,6 @@ export function formatImageUrl(url: string | null | undefined): string {
 }
 
 export function getCanonicalUrl(path: string): string {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://laptopduniya.in';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://phoneradar.in';
   return `${siteUrl}${path}`;
 }

@@ -38,7 +38,7 @@ export function PurchaseExplorer({ laptop, retailers, defaultPrice, defaultLink,
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ALWAYS use the laptop's base_price (which the backend now syncs to the lowest)
+  // Always use the synced base price from the backend.
   const currentPrice = defaultPrice;
   const currentLink = defaultLink;
   
@@ -68,7 +68,7 @@ export function PurchaseExplorer({ laptop, retailers, defaultPrice, defaultLink,
                     )}
                     <div className="flex flex-col">
                         <span className="text-xs font-black text-gray-900 leading-none mb-1">{laptop.title}</span>
-                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-none">Best Online Price</span>
+                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-none">Best Live Price</span>
                     </div>
                 </div>
                 <div className="flex items-center gap-6">
@@ -98,7 +98,7 @@ export function PurchaseExplorer({ laptop, retailers, defaultPrice, defaultLink,
           <div className="flex justify-between items-start">
              <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
-                   <div className="bg-emerald-50 text-[#10B981] text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-emerald-100/50">Best Online Price</div>
+                   <div className="bg-emerald-50 text-[#10B981] text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-emerald-100/50">Best Phone Price</div>
                    <div className="flex items-center gap-0.5 text-yellow-400">
                       {[1,2,3,4,5].map(i => <Award key={i} size={10} fill="currentColor" />)}
                    </div>
@@ -142,7 +142,7 @@ export function PurchaseExplorer({ laptop, retailers, defaultPrice, defaultLink,
   return (
       <section className="flex flex-col gap-5">
           <div className="flex flex-col gap-1 px-1">
-             <h3 className="text-lg font-black text-gray-900 tracking-tight">Available Store Prices</h3>
+             <h3 className="text-lg font-black text-gray-900 tracking-tight">Available Store Offers</h3>
              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Live prices from verified retailers</p>
           </div>
           

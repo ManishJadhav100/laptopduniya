@@ -7,8 +7,8 @@ async function getSolutions() {
 }
 
 export const metadata = {
-  title: "Laptop Tech Help Center - Laptop Duniya",
-  description: "Step-by-step troubleshooting guides and solutions for common laptop software and hardware issues.",
+  title: "Mobile Help Center - PhoneRadar",
+  description: "Step-by-step troubleshooting guides and solutions for common smartphone software and hardware issues.",
 };
 
 export default async function SolutionsPage() {
@@ -26,7 +26,7 @@ export default async function SolutionsPage() {
               <span className="text-[#10B981]">Tech Help Center</span>
            </div>
            <h1 className="text-[22px] font-black text-gray-900 tracking-tight mb-2">Tech Fixes & Support</h1>
-           <p className="text-gray-500 font-bold text-lg max-w-2xl leading-relaxed">Don't let technical glitches slow you down. Browse our verified step-by-step solutions for thousands of laptop hardware and software problems.</p>
+           <p className="text-gray-500 font-bold text-lg max-w-2xl leading-relaxed">Do not let technical glitches slow you down. Browse our verified step-by-step solutions for common smartphone hardware, software, battery, and connectivity problems.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
@@ -68,7 +68,7 @@ export default async function SolutionsPage() {
              <div className="bg-[#10B981] bg-opacity-5 border border-[#10B981] border-opacity-10 rounded-2xl p-8 text-center flex flex-col items-center">
                 <Mail className="w-10 h-10 text-[#10B981] mb-4" />
                 <h4 className="text-xs font-black text-gray-900 uppercase tracking-wide mb-2 text-center">Join Tech Inner Circle</h4>
-                <p className="text-[11px] text-gray-500 font-bold mb-6 text-center">Receive weekly troubleshooting tips and software health alerts for your laptop model.</p>
+                <p className="text-[11px] text-gray-500 font-bold mb-6 text-center">Receive weekly troubleshooting tips and software health alerts for your phone model.</p>
                 <input type="text" placeholder="Email Address" className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-xs mb-3 outline-none focus:border-[#10B981]" />
                 <button className="w-full bg-[#10B981] text-white font-black py-4 rounded-xl text-xs uppercase tracking-widest shadow-lg shadow-emerald-500/10">Subscribe Now</button>
              </div>
@@ -76,7 +76,7 @@ export default async function SolutionsPage() {
              <div className="bg-gray-900 text-white rounded-2xl p-8 shadow-xl">
                 <h3 className="text-xs font-black uppercase tracking-widest mb-6 border-b border-gray-800 pb-4 flex items-center gap-2"><ShieldCheck className="text-[#10B981]" /> Laboratory Fixes</h3>
                 <p className="text-[11px] font-bold text-gray-400 leading-relaxed italic">
-                   "Every technical solution provided on Laptop Duniya is tested by our engineering team across multiple BIOS and Windows versions to ensure accuracy."
+                   "Every technical solution provided on PhoneRadar is tested by our team across multiple Android builds, app versions, and common device scenarios to ensure accuracy."
                 </p>
              </div>
 

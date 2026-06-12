@@ -92,7 +92,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const addToCompare = useCallback((laptop: Laptop) => {
     setCompareList(prev => {
       if (prev.length >= 4) {
-        alert("You can only compare up to 4 laptops at once.");
+        alert("You can only compare up to 4 mobiles at once.");
         return prev;
       }
       if (!prev.find((p) => p.id === laptop.id)) {

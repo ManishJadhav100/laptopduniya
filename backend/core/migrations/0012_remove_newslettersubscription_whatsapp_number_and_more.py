@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='newslettersubscription',
             name='email',
-            field=models.EmailField(default='subscriber@laptopduniya.in', max_length=254, unique=True),
+            field=models.EmailField(default='subscriber@phoneradar.in', max_length=254, unique=True),
         ),
         migrations.AlterField(
             model_name='newslettersubscription',

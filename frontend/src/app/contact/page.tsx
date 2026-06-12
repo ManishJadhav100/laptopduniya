@@ -8,7 +8,7 @@ export default function ContactPage() {
         <div className="text-center mb-16">
           <h1 className="text-5xl font-black text-gray-900 mb-6 tracking-tight uppercase italic">Get in Touch</h1>
           <p className="text-gray-500 font-bold max-w-xl mx-auto leading-relaxed">
-            Have a question about a laptop or a deal? We're here to help. Reach out to the Laptop Duniya team.
+            Have a question about a phone, deal, launch, or buying choice? We are here to help. Reach out to the PhoneRadar team.
           </p>
         </div>
 
@@ -22,7 +22,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="text-sm font-black text-gray-400 uppercase tracking-widest mb-2">Email Support</h3>
-                  <p className="text-2xl font-black text-gray-900 group-hover:text-[#10B981] transition-colors">laptopduniya77@gmail.com</p>
+                  <p className="text-2xl font-black text-gray-900 group-hover:text-[#10B981] transition-colors">hello@phoneradar.in</p>
                   <p className="text-gray-500 font-bold mt-2 text-sm leading-relaxed">Typical response time: Within 24 hours.</p>
                 </div>
               </div>

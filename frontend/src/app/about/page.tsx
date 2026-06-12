@@ -1,5 +1,5 @@
 import React from 'react';
-import { Laptop, Award, Users, Target, CheckCircle2 } from 'lucide-react';
+import { Award, Users, Target } from 'lucide-react';
 
 export default function AboutPage() {
   return (
@@ -14,10 +14,10 @@ export default function AboutPage() {
               <span className="text-[10px] font-black uppercase tracking-widest">Our Mission</span>
             </div>
             <h1 className="text-6xl font-black text-gray-900 leading-tight tracking-tight mb-8">
-              Helping You Find the <span className="text-[#10B981]">Perfect Laptop</span> Without the Stress.
+              Helping You Find the <span className="text-[#10B981]">Perfect Phone</span> Without the Stress.
             </h1>
             <p className="text-xl font-bold text-gray-500 leading-relaxed">
-              At Laptop Duniya, we believe that choosing a computer shouldn't be a gamble. We combine technical expertise with real-world testing to bring you the ultimate buying clarity.
+              At PhoneRadar, we believe that choosing a smartphone should not feel like guesswork. We combine technical expertise with real-world testing to bring you clear, confident buying decisions.
             </p>
           </div>
         </div>
@@ -33,7 +33,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-black text-gray-900 mb-4 tracking-tight">Data-Driven Reviews</h3>
               <p className="text-gray-500 font-bold leading-relaxed">
-                We don't just read spec sheets. We benchmark, test battery life, and analyze displays to give you the raw truth.
+                We do more than read spec sheets. We benchmark, test battery life, and analyze displays to give you the raw truth.
               </p>
             </div>
             <div className="group">
@@ -42,7 +42,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-black text-gray-900 mb-4 tracking-tight">Honest Expertise</h3>
               <p className="text-gray-500 font-bold leading-relaxed">
-                If a laptop has flaws, we'll tell you. Our loyalty is to our readers, not the manufacturers.
+                If a phone has weak battery life, camera issues, or poor value, we will tell you. Our loyalty is to our readers, not the manufacturers.
               </p>
             </div>
             <div className="group">

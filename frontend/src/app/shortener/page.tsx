@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import ShortLinkBuilder from "@/components/ShortLinkBuilder";
 
 export const metadata: Metadata = {
-  title: "Link Shortener - Laptop Duniya",
+  title: "Link Shortener - PhoneRadar",
   description:
-    "Create saved short links that pass through the Laptop Duniya 2-step redirect and ad placement flow.",
+    "Create saved short links that pass through the PhoneRadar 2-step redirect and ad placement flow.",
 };
 
 export default function ShortenerPage() {

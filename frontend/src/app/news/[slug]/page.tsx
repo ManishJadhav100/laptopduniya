@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Clock, ArrowLeft, Tag, Share2, Link as LinkIcon, Laptop } from 'lucide-react';
+import { Clock, ArrowLeft, Tag, Share2, Link as LinkIcon, Smartphone } from 'lucide-react';
 import AuthorBox from '@/components/AuthorBox';
 import { CommentSystem } from '@/components/ReviewSystem';
 import { formatImageUrl } from '@/lib/url-utils';
@@ -13,7 +13,7 @@ async function getNewsArticle(slug: string) {
 }
 
 async function getRelatedLaptops() {
-    return fetchApiList<any>("/laptops/?limit=6", { next: { revalidate: 300 } });
+    return fetchApiList<any>("/mobiles/?limit=6", { next: { revalidate: 300 } });
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const article = await getNewsArticle(resolvedParams.slug);
   if (!article) return { title: 'Article Not Found' };
   return {
-    title: article.meta_title || `${article.title} - Laptop Duniya News`,
+    title: article.meta_title || `${article.title} - PhoneRadar News`,
     description: article.meta_description,
   };
 }
@@ -92,9 +92,9 @@ export default async function NewsSinglePage({ params }: { params: Promise<{ slu
               <h3 className="bg-gray-900 text-white text-[10px] font-black uppercase tracking-widest px-6 py-4">Recommended Products</h3>
               <div className="p-6 flex flex-col gap-6">
                  {relatedLaptops.slice(0, 6).map((l: any, i: number) => (
-                    <Link href={`/laptops/${l.slug}`} key={i} className="flex gap-4 group">
+                    <Link href={`/mobiles/${l.slug}`} key={i} className="flex gap-4 group">
                        <div className="w-20 h-16 bg-[#fafafa] border border-gray-100 rounded flex items-center justify-center shrink-0 group-hover:border-[#10B981] transition-colors overflow-hidden">
-                          {l.image ? <img src={formatImageUrl(l.image)} className="w-full h-full object-contain" /> : <Laptop size={20} className="text-gray-300" />}
+                          {l.image ? <img src={formatImageUrl(l.image)} className="w-full h-full object-contain" /> : <Smartphone size={20} className="text-gray-300" />}
                        </div>
                        <div className="flex flex-col gap-1">
                           <h4 className="text-xs font-black text-gray-800 group-hover:text-[#10B981] leading-tight transition-colors line-clamp-2">{l.title}</h4>
@@ -103,8 +103,8 @@ export default async function NewsSinglePage({ params }: { params: Promise<{ slu
                     </Link>
                  ))}
               </div>
-              <Link href="/laptops" className="block text-center bg-gray-50 py-4 text-[10px] font-black uppercase text-gray-500 hover:text-[#10B981] border-t border-gray-100 transition-colors">
-                 Browse all laptop deals
+              <Link href="/mobiles" className="block text-center bg-gray-50 py-4 text-[10px] font-black uppercase text-gray-500 hover:text-[#10B981] border-t border-gray-100 transition-colors">
+                 Browse all mobile deals
               </Link>
            </div>
 

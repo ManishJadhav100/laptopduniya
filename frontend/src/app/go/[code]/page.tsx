@@ -9,7 +9,7 @@ import { fetchShortenedLink } from "@/lib/short-links";
 export const dynamic = "force-dynamic";
 
 async function getRandomLaptopSlug() {
-  const laptops = await fetchApiList<{ slug?: string }>("/laptops/?limit=36", {
+  const laptops = await fetchApiList<{ slug?: string }>("/mobiles/?limit=36", {
     cache: "no-store",
   });
   const candidates = laptops.filter((item) => item?.slug);
